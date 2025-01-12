@@ -1,20 +1,25 @@
-@prefix : <http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#> .
+@prefix : <http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#> .
+@base <http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/> .
 
 <http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology> rdf:type owl:Ontology ;
                                                                              owl:imports <http://www.ontologydesignpatterns.org/cp/owl/bag.owl> ,
                                                                                          <http://www.ontologydesignpatterns.org/cp/owl/list.owl> ;
-                                                                             rdfs:comment "An ontology to describe narrative aspects of video games"@en ;
-                                                                             rdfs:label "Games Narrative Ontology"@en .
+                                                                             <http://purl.org/dc/elements/1.1/creator> "Alberto Aiello" ,
+                                                                                                                       "Lorenzo Bonincontro" ;
+                                                                             rdfs:comment "An ontology to describe narrative aspects of video games"@en .
 
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
 
 ###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
@@ -24,213 +29,233 @@
 #    Object Properties
 #################################################################
 
-###  http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#directlyPrecedes
-<http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#directlyPrecedes> rdfs:domain :Game ;
-                                                                             rdfs:range :Game .
+###  http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem
+<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> owl:propertyChainAxiom ( <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem>
+                                                                                        <http://www.ontologydesignpatterns.org/cp/owl/list.owl#nextItem>
+                                                                                      ) ,
+                                                                                      ( <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem>
+                                                                                        <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem>
+                                                                                      ) .
 
 
-###  http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows
-<http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows> rdfs:domain <http://schema.org/Product> ,
-                                                                                owl:Thing ;
-                                                                    rdfs:range <http://schema.org/Product> ,
-                                                                               owl:Thing .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Love
+:Love rdf:type owl:ObjectProperty ;
+      owl:inverseOf :isLovedBy ;
+      rdfs:domain :Lover ;
+      rdfs:range :Character ;
+      rdfs:comment "relation from a lover to a character"@en ;
+      rdfs:label "loves"@en .
 
 
-###  http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes
-<http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes> rdfs:domain :Game ;
-                                                                     rdfs:range :Game .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#ReciprocallyLoves
+:ReciprocallyLoves rdf:type owl:ObjectProperty ,
+                            owl:SymmetricProperty ;
+                   rdfs:domain :Character ;
+                   rdfs:range :Character ;
+                   rdfs:comment "relation from a character to a character"@en ;
+                   rdfs:label "ReciprocallyLoves"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#AppearsIn
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isLovedBy
+:isLovedBy rdf:type owl:ObjectProperty ;
+           rdfs:domain :Character ;
+           rdfs:range :Lover ;
+           rdfs:comment "relation from a character to a lover"@en ;
+           rdfs:label "isLovedBy"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isThemeOf
+:isThemeOf rdf:type owl:ObjectProperty ;
+           owl:inverseOf :hasTheme ;
+           rdfs:domain :Themes ;
+           rdfs:range :Game .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AppearsIn
 :AppearsIn rdf:type owl:ObjectProperty ;
            owl:inverseOf :hasCharacter ;
-           rdfs:domain :Character ;
-           rdfs:range :DLC ,
-                      :Game ;
-           rdfs:comment "A character appears in a game"@en ;
-           rdfs:label "appears in"@en .
+           rdfs:comment "relation from a character to a game"@en ;
+           rdfs:label "AppearsIn"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#DevBy
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/CompanyMakeSeries
+:CompanyMakeSeries rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :SeriesDevBy ;
+                   rdfs:domain :DevPublisher ;
+                   rdfs:range :Series ;
+                   rdfs:comment "relation from a Company to a Serie (es. Fifa)"@en ;
+                   rdfs:label "CompanyMakeSeries"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/DevBy
 :DevBy rdf:type owl:ObjectProperty ;
        owl:inverseOf :makes ;
        rdfs:domain <http://schema.org/Product> ;
        rdfs:range :DevPublisher ;
-       rdfs:comment "A product is developed by a publisher (inverse: makes)"@en ;
-       rdfs:label "developed by"@en .
+       rdfs:comment "relation from a Product to a studio"@en ;
+       rdfs:label "DevBy"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Owns
-:Owns rdf:type owl:ObjectProperty ;
-      rdfs:domain :Asset ;
-      rdfs:range :Character ;
-      rdfs:comment "An asset is owned by a character (inverse of hasAsset)"@en ;
-      rdfs:label "Owns"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SeriesDevBy
+:SeriesDevBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Series ;
+             rdfs:range :DevPublisher ;
+             owl:propertyChainAxiom ( <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem>
+                                      :DevBy
+                                    ) ;
+             rdfs:comment "relation from a saga to a studio"@en ;
+             rdfs:label "sagaMadeBy"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#belongsTo
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/belongsTo
 :belongsTo rdf:type owl:ObjectProperty ;
+           owl:inverseOf :hasAsset ;
            rdfs:domain :Asset ;
            rdfs:range :Character ;
-           rdfs:comment "An asset belongs to a character"@en ;
-           rdfs:label "belongs to"@en .
+           rdfs:comment "relation from a asset to a character"@en ;
+           rdfs:label "belongsTo"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasAsset
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasAsset
 :hasAsset rdf:type owl:ObjectProperty ;
-          rdfs:domain :Game ;
+          rdfs:domain :Character ;
           rdfs:range :Asset ;
-          rdfs:comment "A character has (owns) an asset (inverse of belongsTo)"@en ;
-          rdfs:label "has Asset"@en .
+          rdfs:comment "relation from a character to an asset"@en ;
+          rdfs:label "hasAsset"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasCharacter
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasCharacter
 :hasCharacter rdf:type owl:ObjectProperty ;
-              rdfs:domain :DLC ,
-                          :Game ;
+              rdfs:domain :Game ;
               rdfs:range :Character ;
-              rdfs:comment "A game has a character"@en ;
-              rdfs:label "has Character"@en .
+              rdfs:comment "relation from a game to a character"@en ;
+              rdfs:label "hasCharacter"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasMap
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasMap
 :hasMap rdf:type owl:ObjectProperty ;
         owl:inverseOf :isMapOf ;
         rdfs:domain :Game ;
         rdfs:range :Map ;
-        rdfs:comment "A game has a map"@en ;
-        rdfs:label "has Map"@en .
+        rdfs:comment "relation from a game to a map"@en ;
+        rdfs:label "hasMap"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasProtagonist
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasProtagonist
 :hasProtagonist rdf:type owl:ObjectProperty ;
                 owl:inverseOf :isProtagonistOf ;
                 rdfs:domain :Game ;
                 rdfs:range :Character ;
-                rdfs:comment "A game has a protagonist (inverse of isProtagonistOf)"@en ;
-                rdfs:label "has Protagonist"@en .
+                rdfs:comment "relation from a game to a character" ;
+                rdfs:label "hasProtagonist"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasSex
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasSex
 :hasSex rdf:type owl:ObjectProperty ;
         rdfs:domain :Character ;
         rdfs:range :Gender ;
-        rdfs:comment "A character has a certain gender (maps to enumerated class)"@en ;
-        rdfs:label "has Sex (Gender)"@en .
+        rdfs:comment "relation from a character to a gender"@en ;
+        rdfs:label "hasSex"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasThemes
-:hasThemes rdf:type owl:ObjectProperty ;
-           rdfs:domain :Story_Game ;
-           rdfs:range :Themes ;
-           rdfs:comment "Associates a story-driven game with one or more themes"@en ;
-           rdfs:label "has Themes"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasTheme
+:hasTheme rdf:type owl:ObjectProperty ;
+          rdfs:domain :Game ;
+          rdfs:range :Themes ;
+          rdfs:comment "Associates a story-driven game with one or more themes"@en ;
+          rdfs:label "hasTheme"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasWarrior
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasWarrior
 :hasWarrior rdf:type owl:ObjectProperty ;
             owl:inverseOf :isWarriorOf ;
             rdfs:domain :Game ;
             rdfs:range :Character ;
-            rdfs:comment "A game has a warrior (inverse of isWarriorOf)"@en ;
-            rdfs:label "has Warrior"@en .
+            rdfs:comment "A game has a warrior"@en ;
+            rdfs:label "hasWarrior"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isAssetOf
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isAssetOf
 :isAssetOf rdf:type owl:ObjectProperty ;
            rdfs:domain :Asset ;
            rdfs:range :Game ;
-           rdfs:comment "Inverse property: the asset belongs to a game"@en ;
-           rdfs:label "is Asset of"@en .
+           owl:propertyChainAxiom ( :belongsTo
+                                    :AppearsIn
+                                  ) ;
+           rdfs:comment "relation from a asset to a game" ;
+           rdfs:label "isAssetOf"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isMapOf
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isMapOf
 :isMapOf rdf:type owl:ObjectProperty ;
          rdfs:domain :Map ;
          rdfs:range :Game ;
-         rdfs:comment "A map is map of a certain game"@en ;
-         rdfs:label "is Map of"@en .
+         rdfs:comment "relation from a map to a game"@en ;
+         rdfs:label "isMapOf"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isProtagonistOf
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isProtagonistOf
 :isProtagonistOf rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :AppearsIn ;
                  rdfs:domain :Character ;
                  rdfs:range :Game ;
-                 rdfs:comment "A character is protagonist of a game"@en ;
-                 rdfs:label "is Protagonist of"@en .
+                 rdfs:comment "relation from a character to a game"@en ;
+                 rdfs:label "isProtagonistOf"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isUsedBy
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isUsedBy
 :isUsedBy rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :isAssetOf ;
           owl:inverseOf :usesWeapon ;
           rdfs:domain :Weapon ;
           rdfs:range :Character ;
-          rdfs:comment "A weapon is used by a character (inverse of usesWeapon)"@en ;
-          rdfs:label "is used by"@en .
+          rdfs:comment "relation from a weapon to a character"@en ;
+          rdfs:label "isUsedBy"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isWarriorOf
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isWarriorOf
 :isWarriorOf rdf:type owl:ObjectProperty ;
              rdfs:domain :Character ;
              rdfs:range :Game ;
              rdfs:comment "A character is warrior of a game"@en ;
-             rdfs:label "is Warrior of"@en .
+             rdfs:label "isWarriorOf"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#makes
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/makes
 :makes rdf:type owl:ObjectProperty ;
        rdfs:domain :DevPublisher ;
        rdfs:range <http://schema.org/Product> ;
-       rdfs:comment "A developer/publisher makes a product (inverse of DevBy)"@en ;
+       rdfs:comment "A developer/publisher makes a product"@en ;
        rdfs:label "makes"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#usesWeapon
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/usesWeapon
 :usesWeapon rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :hasAsset ;
             rdfs:domain :Character ;
             rdfs:range :Weapon ;
-            rdfs:comment "A character uses a weapon"@en ;
-            rdfs:label "uses Weapon"@en .
+            rdfs:comment "relation from a character to a weapon" ;
+            rdfs:label "usesWeapon"@en .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Age
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Age
 :Age rdf:type owl:DatatypeProperty ;
      rdfs:domain :Character ;
-     rdfs:range xsd:int ;
-     rdfs:comment "The age of a character (integer)"@en ;
-     rdfs:label "Age"@en .
+     rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Name
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Name
 :Name rdf:type owl:DatatypeProperty ;
       rdfs:domain :Character ;
-      rdfs:range xsd:string ;
-      rdfs:comment "Name of a character (string)"@en ;
-      rdfs:label "Name"@en .
+      rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Sex
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sex
 :Sex rdf:type owl:DatatypeProperty ;
      rdfs:domain :Character ;
-     rdfs:range xsd:string ;
-     rdfs:comment "Sex of a character (string), simpler alternative to hasSex"@en ;
-     rdfs:label "Sex"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasUniqueTitle
-:hasUniqueTitle rdf:type owl:DatatypeProperty ,
-                         owl:FunctionalProperty ;
-                rdfs:domain :Game ;
-                rdfs:range xsd:string ;
-                rdfs:comment "A game has a unique official title (functional property)"@en ;
-                rdfs:label "has Unique Title"@en .
+     rdfs:range xsd:string .
 
 
 #################################################################
@@ -240,72 +265,69 @@
 ###  http://schema.org/Product
 <http://schema.org/Product> rdf:type owl:Class ;
                             rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/list.owl#ListItem> ;
-                            rdfs:comment "Imported concept from schema.org for products"@en ;
-                            rdfs:label "Product (Schema.org)"@en .
+                            rdfs:comment "Represents something that can be sold"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Adult
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Adult
 :Adult rdf:type owl:Class ;
        rdfs:subClassOf :Character ;
        owl:disjointWith :Minor ;
-       rdfs:comment "An adult character (age >= 18)"@en ;
+       rdfs:comment "Character which age is over 18" ;
        rdfs:label "Adult"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Asset
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Asset
 :Asset rdf:type owl:Class ;
-       rdfs:comment "Any item/asset that can be owned by a character or used in a game"@en ;
+       rdfs:comment """Any asset that can be owned by a character or used in a game.
+An important component of a video game"""@en ;
        rdfs:label "Asset"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Car
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Car
 :Car rdf:type owl:Class ;
      rdfs:subClassOf :Asset ;
-     rdfs:comment "A specific type of Asset representing a car/vehicle"@en ;
+     rdfs:comment "A specific game asset that is used in games that represents a car"@en ;
      rdfs:label "Car"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Card
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Card
 :Card rdf:type owl:Class ;
       rdfs:subClassOf :Asset ;
-      rdfs:comment "A playing card or similar card-based item"@en ;
+      rdfs:comment "A game asset that can be used in the context of a  game"@en ;
       rdfs:label "Card"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Card_Game
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Card_Game
 :Card_Game rdf:type owl:Class ;
-           rdfs:subClassOf :Game ;
-           rdfs:comment "A game based on cards"@en ;
-           rdfs:label "Card Game"@en .
+           rdfs:subClassOf :Game .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Character
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Character
 :Character rdf:type owl:Class ;
-           rdfs:comment "A general class for any character in a game"@en ;
+           rdfs:comment "A character of a game" ;
            rdfs:label "Character"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Competitive_Game
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Competitive_Game
 :Competitive_Game rdf:type owl:Class ;
-                  rdfs:subClassOf :Game ;
-                  rdfs:comment "A game focused on competition"@en ;
-                  rdfs:label "Competitive Game"@en .
+                  rdfs:subClassOf :Game .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#DLC
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/DLC
 :DLC rdf:type owl:Class ;
      rdfs:subClassOf <http://schema.org/Product> ;
-     rdfs:comment "Downloadable content, considered a Product"@en ;
+     rdfs:comment """Downloadable content, considered a Product.
+Downloadable Content for a videogame. It generally is an expansion to the base version of the Game"""@en ;
      rdfs:label "DLC"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#DevPublisher
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/DevPublisher
 :DevPublisher rdf:type owl:Class ;
-              rdfs:comment "A company that develops or publishes games"@en ;
-              rdfs:label "Developer/Publisher"@en .
+              rdfs:comment "A company that develops or publishes games" ;
+              rdfs:label "DevPublisher"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#FemaleProtagonistGame
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/FemaleProtagonistGame
 :FemaleProtagonistGame rdf:type owl:Class ;
                        owl:equivalentClass [ owl:intersectionOf ( :Story_Game
                                                                   [ rdf:type owl:Restriction ;
@@ -322,45 +344,51 @@
                                                                 ) ;
                                              rdf:type owl:Class
                                            ] ;
-                       rdfs:subClassOf :Story_Game ;
-                       rdfs:comment "A story game whose protagonist is female"@en ;
-                       rdfs:label "Female Protagonist Game"@en .
+                       rdfs:subClassOf :Story_Game .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Game
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Game
 :Game rdf:type owl:Class ;
       rdfs:subClassOf <http://schema.org/Product> ;
-      rdfs:comment "Any game, considered a Product from schema.org"@en ;
       rdfs:label "Game"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Gender
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Gender
 :Gender rdf:type owl:Class ;
         owl:equivalentClass [ rdf:type owl:Class ;
-                              owl:oneOf ( :Female
+                              owl:oneOf ( :NotSpecified
+                                          :Female
                                           :Male
-                                          :NotSpecificato
                                         )
                             ] ;
-        rdfs:comment "Enumerated class for Gender (Female, Male, NotSpecified)"@en ;
+        rdfs:comment """The gender of some characters: in the domain of videogames could be something other than male/female.
+Enumerated class for Gender (Female, Male, NotSpecified)""" ;
         rdfs:label "Gender"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Killer
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Killer
 :Killer rdf:type owl:Class ;
         rdfs:subClassOf :Character ;
-        rdfs:comment "A character whose role is that of a killer"@en ;
+        rdfs:comment "A character that has killed some other character"@en ;
         rdfs:label "Killer"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Lover
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Lover
 :Lover rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( :Character
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :Love ;
+                                                    owl:someValuesFrom :Character
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
        rdfs:subClassOf :Character ;
-       rdfs:comment "A character with the lover role"@en ;
+       rdfs:comment "A character that is in love with some other character" ;
        rdfs:label "Lover"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#MaleProtagonistGame
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/MaleProtagonistGame
 :MaleProtagonistGame rdf:type owl:Class ;
                      owl:equivalentClass [ owl:intersectionOf ( :Story_Game
                                                                 [ rdf:type owl:Restriction ;
@@ -377,25 +405,23 @@
                                                               ) ;
                                            rdf:type owl:Class
                                          ] ;
-                     rdfs:subClassOf :Story_Game ;
-                     rdfs:comment "A story game whose protagonist is male"@en ;
-                     rdfs:label "Male Protagonist Game"@en .
+                     rdfs:subClassOf :Story_Game .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Map
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Map
 :Map rdf:type owl:Class ;
-     rdfs:comment "A map/stage/level in a game"@en ;
+     rdfs:comment "A fictionary representation of either a real or an imaginary place in which the action is set during a game" ;
      rdfs:label "Map"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Minor
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Minor
 :Minor rdf:type owl:Class ;
        rdfs:subClassOf :Character ;
-       rdfs:comment "A character under 18"@en ;
+       rdfs:comment "Character which age is under 18"@en ;
        rdfs:label "Minor"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Protagonist
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Protagonist
 :Protagonist rdf:type owl:Class ;
              owl:equivalentClass [ owl:intersectionOf ( :Character
                                                         [ rdf:type owl:Restriction ;
@@ -406,45 +432,53 @@
                                    rdf:type owl:Class
                                  ] ;
              rdfs:subClassOf :Character ;
-             rdfs:comment "A character that is protagonist in some game"@en ;
+             rdfs:comment """A character that is considered the leader / main character of a game.
+Usually the  one the player plays as.""" ;
              rdfs:label "Protagonist"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Series
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Series
 :Series rdf:type owl:Class ;
         rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/list.owl#List> ;
-        rdfs:comment "A series of games, using list ODP"@en ;
+        rdfs:comment """A series of games, using list ODP
+A list of games that have something in common and have an intrinsic order.
+They might share the universe, the topic, the producer, ..."""@en ;
         rdfs:label "Series"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Sniper
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sniper
 :Sniper rdf:type owl:Class ;
         rdfs:subClassOf :Character ;
         rdfs:comment "A character who is specialized in sniper roles"@en ;
         rdfs:label "Sniper"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Story_Game
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Story_Game
 :Story_Game rdf:type owl:Class ;
-            rdfs:subClassOf :Game ;
-            rdfs:comment "A game that is narrative/story-driven"@en ;
-            rdfs:label "Story Game"@en .
+            rdfs:subClassOf :Game .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Themes
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Themes
 :Themes rdf:type owl:Class ;
-        rdfs:comment "A narrative themes or genres for a Story_Game (e.g. fantasy, western, horror, etc.)"@en ;
+        owl:equivalentClass [ rdf:type owl:Class ;
+                              owl:oneOf ( :Action-Adventure
+                                          :Fantasy
+                                          :Horror
+                                          :Post-Apocalyptic
+                                          :Sci-Fi
+                                        )
+                            ] ;
         rdfs:label "Themes"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Villager
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Villager
 :Villager rdf:type owl:Class ;
           rdfs:subClassOf :Character ;
           rdfs:comment "A generic villager or NPC character"@en ;
           rdfs:label "Villager"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Warrior
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Warrior
 :Warrior rdf:type owl:Class ;
          owl:equivalentClass [ owl:intersectionOf ( :Character
                                                     [ rdf:type owl:Restriction ;
@@ -459,10 +493,11 @@
          rdfs:label "Warrior"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Weapon
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Weapon
 :Weapon rdf:type owl:Class ;
         rdfs:subClassOf :Asset ;
-        rdfs:comment "A particular type of Asset used as a weapon"@en ;
+        rdfs:comment """A game asset that can be used in the context of a  game.
+es. A game asset that can be used to shoot projectiles"""@en ;
         rdfs:label "Weapon"@en .
 
 
@@ -470,235 +505,256 @@
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Aloy
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#FinalFantasyX
+:FinalFantasyX rdf:type owl:NamedIndividual ,
+                        :Story_Game ;
+               :DevBy :SquareEnix ;
+               :hasTheme :Fantasy .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Joel
+:Joel rdf:type owl:NamedIndividual ,
+               :Character ;
+      :hasSex :Male ;
+      :isProtagonistOf :TheLastOfUs .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#NotSpecified
+:NotSpecified rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Pistol
+:Pistol rdf:type owl:NamedIndividual ,
+                 :Weapon ;
+        :isAssetOf :TheLastOfUs .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Sony
+:Sony rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#SquareEnix
+:SquareEnix rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Texas
+:Texas rdf:type owl:NamedIndividual ,
+                :Map ;
+       :isMapOf :TheLastOfUs .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#TheLastOfUs
+:TheLastOfUs rdf:type owl:NamedIndividual ,
+                      :Story_Game ;
+             :DevBy :Sony .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Tidus
+:Tidus rdf:type owl:NamedIndividual ,
+                :Character ;
+       :Love :Yuna ;
+       :hasSex :Male ;
+       :isProtagonistOf :FinalFantasyX ;
+       :Age "21"^^xsd:int ;
+       :Name "Tidus" ;
+       :Sex "Male" .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Yuna
+:Yuna rdf:type owl:NamedIndividual ,
+               :Character ;
+      :Love :Tidus ;
+      :hasSex :Female ;
+      :isProtagonistOf :FinalFantasyX ;
+      :Age "14"^^xsd:int ;
+      :Name "Yuna" ;
+      :Sex "Female" .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
+:Action-Adventure rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Aloy
 :Aloy rdf:type owl:NamedIndividual ,
                :Character ;
       :hasSex :Female ;
       :isProtagonistOf :HorizonZeroDawn ;
       :isWarriorOf :HorizonZeroDawn ;
       :Age "22"^^xsd:int ;
-      :Name "Aloy" ;
-      rdfs:label "Aloy"@en .
+      :Name "Aloy" .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#ArthurMorgan
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/ArthurMorgan
 :ArthurMorgan rdf:type owl:NamedIndividual ,
                        :Character ;
               :hasSex :Male ;
               :isProtagonistOf :RedDeadRedemption2 ;
-              :usesWeapon :PumpActionShotgun ;
-              rdfs:label "ArthurMorgan"@en .
+              :usesWeapon :PumpActionShotgun .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#BlizzardEntertainment
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/BlizzardEntertainment
 :BlizzardEntertainment rdf:type owl:NamedIndividual ,
-                                :DevPublisher ;
-                       rdfs:label "BlizzardEntertainment"@en .
+                                :DevPublisher .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#DFHStadium
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/DFHStadium
 :DFHStadium rdf:type owl:NamedIndividual ,
                      :Map ;
-            :isMapOf :RocketLeague ;
-            rdfs:label "DFHStadium"@en .
+            :isMapOf :RocketLeague .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#EASports
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/EASports
 :EASports rdf:type owl:NamedIndividual ,
-                   :DevPublisher ;
-          rdfs:label "EASports"@en .
+                   :DevPublisher .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Female
-:Female rdf:type owl:NamedIndividual ;
-        rdfs:label "Female"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fantasy
+:Fantasy rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Fifa2021
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Female
+:Female rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2021
 :Fifa2021 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2022 ;
-          :DevBy :EASports ;
-          rdfs:label "Fifa2021"@en .
+          :DevBy :EASports .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Fifa2022
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2022
 :Fifa2022 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2023 ;
-          :DevBy :EASports ;
-          rdfs:label "Fifa2022"@en .
+          :DevBy :EASports .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Fifa2023
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2023
 :Fifa2023 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2024 ;
-          :DevBy :EASports ;
-          rdfs:label "Fifa2023"@en .
+          :DevBy :EASports .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Fifa2024
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2024
 :Fifa2024 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2025 ;
-          :DevBy :EASports ;
-          rdfs:label "Fifa2024"@en .
+          :DevBy :EASports .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Fifa2025
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2025
 :Fifa2025 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
-          :DevBy :EASports ;
-          rdfs:label "Fifa2025"@en .
+          :DevBy :EASports .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#FifaSeries
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/FifaSeries
 :FifaSeries rdf:type owl:NamedIndividual ,
                      :Series ;
             <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasFirstItem> :Fifa2021 ;
-            <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasLastItem> :Fifa2025 ;
-            rdfs:label "FifaSeries"@en .
+            <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasLastItem> :Fifa2025 .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#GuerrillaGames
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/GuerrillaGames
 :GuerrillaGames rdf:type owl:NamedIndividual ,
-                         :DevPublisher ;
-                rdfs:label "GuerrillaGames"@en .
+                         :DevPublisher .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Hearthstone
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Hearthstone
 :Hearthstone rdf:type owl:NamedIndividual ,
                       :Card_Game ;
-             :DevBy :BlizzardEntertainment ;
-             rdfs:label "Hearthstone"@en .
+             :DevBy :BlizzardEntertainment .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#HorizonZeroDawn
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/HorizonZeroDawn
 :HorizonZeroDawn rdf:type owl:NamedIndividual ,
                           :Story_Game ;
-                 :DevBy :GuerrillaGames ;
-                 rdfs:label "HorizonZeroDawn"@en .
+                 :DevBy :GuerrillaGames .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Joel
-:Joel rdf:type owl:NamedIndividual ,
-               :Character ;
-      :Owns :pistol ;
-      :hasSex :Male ;
-      :isProtagonistOf :TheLastofUs .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Horror
+:Horror rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Konami
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Konami
 :Konami rdf:type owl:NamedIndividual ,
-                 :DevPublisher ;
-        rdfs:label "Konami"@en .
+                 :DevPublisher .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Male
-:Male rdf:type owl:NamedIndividual ;
-      rdfs:label "Male"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Male
+:Male rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#NotSpecificato
-:NotSpecificato rdf:type owl:NamedIndividual ;
-                rdfs:label "NotSpecificato"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Octane
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Octane
 :Octane rdf:type owl:NamedIndividual ,
                  :Car ;
-        :isAssetOf :RocketLeague ;
-        rdfs:label "Octane"@en .
+        :isAssetOf :RocketLeague .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#PsyonixStudios
-:PsyonixStudios rdf:type owl:NamedIndividual ;
-                rdfs:label "PsyonixStudios"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Post-Apocalyptic
+:Post-Apocalyptic rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#PumpActionShotgun
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/PsyonixStudios
+:PsyonixStudios rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/PumpActionShotgun
 :PumpActionShotgun rdf:type owl:NamedIndividual ,
                             :Weapon ;
-                   :isAssetOf :RedDeadRedemption2 ;
-                   rdfs:label "PumpActionShotgun"@en .
+                   :isAssetOf :RedDeadRedemption2 .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#RedDeadRedemption2
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RedDeadRedemption2
 :RedDeadRedemption2 rdf:type owl:NamedIndividual ,
                              :Story_Game ;
-                    :DevBy :RockstarGames ;
-                    rdfs:label "RedDeadRedemption2"@en .
+                    :DevBy :RockstarGames .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#RocketLeague
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RocketLeague
 :RocketLeague rdf:type owl:NamedIndividual ,
                        :Competitive_Game ;
-              :DevBy :PsyonixStudios ;
-              rdfs:label "RocketLeague"@en .
+              :DevBy :PsyonixStudios .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#RockstarGames
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RockstarGames
 :RockstarGames rdf:type owl:NamedIndividual ,
-                        :DevPublisher ;
-               rdfs:label "RockstarGames"@en .
+                        :DevPublisher .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Sony
-:Sony rdf:type owl:NamedIndividual ,
-               :DevPublisher .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sci-Fi
+:Sci-Fi rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Texas
-:Texas rdf:type owl:NamedIndividual ,
-                :Map ;
-       :isMapOf :TheLastofUs .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#TheLastofUs
-:TheLastofUs rdf:type owl:NamedIndividual ,
-                      :Story_Game ;
-             :DevBy :Sony ;
-             :hasAsset :pistol ;
-             rdfs:label "The Last of Us" .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#UrbanCentral
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/UrbanCentral
 :UrbanCentral rdf:type owl:NamedIndividual ,
                        :Map ;
-              :isMapOf :RocketLeague ;
-              rdfs:label "UrbanCentral"@en .
+              :isMapOf :RocketLeague .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Yu-Gi-Oh
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Yu-Gi-Oh
 :Yu-Gi-Oh rdf:type owl:NamedIndividual ,
                    :Card_Game ,
                    :Competitive_Game ;
-          :DevBy :Konami ;
-          rdfs:label "Yu-Gi-Oh"@en .
+          :DevBy :Konami .
 
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#pistol
-:pistol rdf:type owl:NamedIndividual ,
-                 :Weapon .
-
-
-[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean
-] .
 
 #################################################################
 #    General axioms
 #################################################################
 
 [ owl:intersectionOf ( :Character
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :isProtagonistOf ;
-                          owl:someValuesFrom :Game
-                        ]
-                      ) ;
-   rdf:type owl:Class ;
-   rdfs:subClassOf :Character
- ] .
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isProtagonistOf ;
+                         owl:someValuesFrom :Game
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Character
+] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
@@ -717,8 +773,13 @@
 
 :cage rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
-[ rdfs:comment "A character is an Adult if Age >= 18"@en ;
-   rdfs:label "AdultRule"@en ;
+:x rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:z rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "un personaggio è adulto se ha età >= 18" ;
+   rdfs:label "Adult" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
@@ -750,6 +811,74 @@
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
                                                        <http://www.w3.org/2003/11/swrl#classPredicate> :Adult ;
                                                        <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "un personaggio è minore  se età <18" ;
+   rdfs:label "Minor" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Character ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :Age ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :cage
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first :cage ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 18 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Minor ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Two characters loving each other" ;
+   rdfs:label "ReciprocallyLoves" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :Love ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :z
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :Love ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :z ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :x
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :ReciprocallyLoves ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :z
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]
