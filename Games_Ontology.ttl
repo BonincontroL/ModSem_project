@@ -42,6 +42,23 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
                                                                                       ) .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#DLCof
+:DLCof rdf:type owl:ObjectProperty ;
+       owl:inverseOf :hasDLC ;
+       rdfs:domain :DLC ;
+       rdfs:range :Game ;
+       rdfs:comment "relation from a Game to a DLC"@en ;
+       rdfs:label "DLCof"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasDLC
+:hasDLC rdf:type owl:ObjectProperty ;
+        rdfs:domain :Game ;
+        rdfs:range :DLC ;
+        rdfs:comment "relation from a game to a dlc"@en ;
+        rdfs:label "hasDLC"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AppearsIn
 :AppearsIn rdf:type owl:ObjectProperty ;
            owl:inverseOf :hasCharacter ;
@@ -521,6 +538,19 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Exodia
+:Exodia rdf:type owl:NamedIndividual ,
+                 :Card ;
+        :isAssetOf :Yu-Gi-Oh .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#LeftBehind_DLC
+:LeftBehind_DLC rdf:type owl:NamedIndividual ,
+                         :DLC ;
+                :DLCof :TheLastOfUs ;
+                :DevBy :Sony .
+
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
 :Action-Adventure rdf:type owl:NamedIndividual .
