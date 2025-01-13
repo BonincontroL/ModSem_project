@@ -25,6 +25,10 @@
 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Object Properties
 #################################################################
@@ -356,7 +360,9 @@ Downloadable Content for a videogame. It generally is an expansion to the base v
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Game
 :Game rdf:type owl:Class ;
       rdfs:subClassOf <http://schema.org/Product> ;
-      rdfs:label "Game"@en .
+      rdfs:comment "Some sort of video game"@en ;
+      rdfs:label "Game"@en ;
+      owl:equivalentClass "https://www.wikidata.org/wiki/Q7889" .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Gender

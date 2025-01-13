@@ -1,0 +1,8 @@
+ontologie giá esistenti:
+
+https://dbpedia.org/ontology/VideoGame
+
+https://www.wikidata.org/wiki/Q7889
+
+Schema
+https://schema.org/Product
