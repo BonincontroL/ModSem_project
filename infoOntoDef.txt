@@ -6,3 +6,12 @@ https://www.wikidata.org/wiki/Q7889
 
 Schema
 https://schema.org/Product
+
+
+Link utili per info e doc (Sitografia):
+
+https://steamdb.info/
+
+https://www.igdb.com/
+
+Ontologia esistente x Videogame: https://vocab.linkeddata.es/vgo/
