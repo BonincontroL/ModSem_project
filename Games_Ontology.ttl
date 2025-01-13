@@ -11,7 +11,13 @@
                                                                                          <http://www.ontologydesignpatterns.org/cp/owl/list.owl> ;
                                                                              <http://purl.org/dc/elements/1.1/creator> "Alberto Aiello" ,
                                                                                                                        "Lorenzo Bonincontro" ;
-                                                                             rdfs:comment "An ontology to describe narrative aspects of video games"@en .
+                                                                             <http://purl.org/dc/elements/1.1/date> "2025-01-13 21:40:23"@en ;
+                                                                             <http://purl.org/dc/elements/1.1/title> "Games_Ontology"@en ;
+                                                                             :vann:preferredNamespacePrefix "http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology"@en ;
+                                                                             :vann:preferredNamespaceUri "Games_Ontology"@en ;
+                                                                             rdfs:comment "Ontology focused on character interactions, narrative aspects and settings of video games"@en ;
+                                                                             rdfs:label "Games_Ontology"@en ;
+                                                                             owl:versionInfo "1.0"@en .
 
 #################################################################
 #    Annotation properties
@@ -21,8 +27,24 @@
 <http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/elements/1.1/date
+<http://purl.org/dc/elements/1.1/date> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
 ###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#vann:preferredNamespacePrefix
+:vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#vann:preferredNamespaceUri
+:vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2002/07/owl#equivalentClass
@@ -40,6 +62,23 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
                                                                                       ( <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem>
                                                                                         <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem>
                                                                                       ) .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasVillager
+:hasVillager rdf:type owl:ObjectProperty ;
+             owl:inverseOf :isVillagerOf ;
+             rdfs:domain :Game ;
+             rdfs:range :Character ;
+             rdfs:comment "hasVillager - relationship between character and game"@en ;
+             rdfs:label "hasVillager"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isVillagerOf
+:isVillagerOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :Character ;
+              rdfs:range :Game ;
+              rdfs:comment "iisVillagerOf - relationship between character and game"@en ;
+              rdfs:label "isVillagerOf"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AppearsIn
@@ -525,19 +564,30 @@ They might share the universe, the topic, the producer, ..."""@en ;
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Themes
 :Themes rdf:type owl:Class ;
         owl:equivalentClass [ rdf:type owl:Class ;
-                              owl:oneOf ( :Action-Adventure
+                              owl:oneOf ( :Sandbox
+                                          :Sports
+                                          :Strategy
+                                          :Action-Adventure
                                           :Fantasy
                                           :Horror
                                           :Post-Apocalyptic
                                           :Sci-Fi
                                         )
                             ] ;
-        rdfs:comment "A narrative themes or genres for a Game (e.g. fantasy, western, horror, etc.)"@en ;
+        rdfs:comment "A narrative themes or genres for a Game"@en ;
         rdfs:label "Themes"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Villager
 :Villager rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Character
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :isVillagerOf ;
+                                                       owl:someValuesFrom :Game
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
           rdfs:subClassOf :Character ;
           rdfs:comment "A generic villager or NPC character"@en ;
           rdfs:label "Villager"@en .
@@ -570,8 +620,57 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #    Individuals
 #################################################################
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Bob
+:Bob rdf:type owl:NamedIndividual ,
+              :Character ;
+     :isVillagerOf :Minecraft ;
+     :AppearsIn :Minecraft ;
+     rdfs:label "Bob"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Minecraft
+:Minecraft rdf:type owl:NamedIndividual ,
+                    :Story_Game ;
+           :DevBy :MojangStudios ;
+           :hasTheme :Sandbox ,
+                     :Action-Adventure ;
+           rdfs:label "Minecraft"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#MojangStudios
+:MojangStudios rdf:type owl:NamedIndividual ;
+               rdfs:label "MojangStudios"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Sandbox
+:Sandbox rdf:type owl:NamedIndividual ;
+         rdfs:label "Sandbox"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Sports
+:Sports rdf:type owl:NamedIndividual ;
+        rdfs:label "Sport"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Steve
+:Steve rdf:type owl:NamedIndividual ,
+                :Character ;
+       :hasSex :Male ;
+       :isProtagonistOf :Minecraft ;
+       :Age "20"^^xsd:int ;
+       :Name "Steve" ;
+       :Sex "Male" ;
+       rdfs:label "Steve"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Strategy
+:Strategy rdf:type owl:NamedIndividual ;
+          rdfs:label "Strategy"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
-:Action-Adventure rdf:type owl:NamedIndividual .
+:Action-Adventure rdf:type owl:NamedIndividual ;
+                  rdfs:label "Action-Adventure"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Aloy
@@ -581,7 +680,8 @@ es. A game asset that can be used to shoot projectiles"""@en ;
       :isProtagonistOf :HorizonZeroDawn ;
       :isWarriorOf :HorizonZeroDawn ;
       :Age "22"^^xsd:int ;
-      :Name "Aloy" .
+      :Name "Aloy" ;
+      rdfs:label "Aloy"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AnthonyForeman
@@ -591,7 +691,8 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                 :hasSex :Male ;
                 :Age "35"^^xsd:int ;
                 :Name "AnthonyForeman" ;
-                :Sex "Male" .
+                :Sex "Male" ;
+                rdfs:label "AntonyForeman"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/ArthurMorgan
@@ -603,106 +704,131 @@ es. A game asset that can be used to shoot projectiles"""@en ;
               :usesWeapon :PumpActionShotgun ;
               :Age "53"^^xsd:int ;
               :Name "ArthurMorgan" ;
-              :Sex "Male" .
+              :Sex "Male" ;
+              rdfs:label "ArthurMorgan"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/BlizzardEntertainment
 :BlizzardEntertainment rdf:type owl:NamedIndividual ,
-                                :DevPublisher .
+                                :DevPublisher ;
+                       rdfs:label "BlizzardEntertainment"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/DFHStadium
 :DFHStadium rdf:type owl:NamedIndividual ,
                      :Map ;
-            :isMapOf :RocketLeague .
+            :isMapOf :RocketLeague ;
+            rdfs:label "DFHStadium"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/EASports
 :EASports rdf:type owl:NamedIndividual ,
-                   :DevPublisher .
+                   :DevPublisher ;
+          rdfs:label "EASports"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Exodia
 :Exodia rdf:type owl:NamedIndividual ,
                  :Card ;
-        :isAssetOf :Yu-Gi-Oh .
+        :isAssetOf :Yu-Gi-Oh ;
+        rdfs:label "Exodia"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fantasy
-:Fantasy rdf:type owl:NamedIndividual .
+:Fantasy rdf:type owl:NamedIndividual ;
+         rdfs:label "Fantasy"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Female
-:Female rdf:type owl:NamedIndividual .
+:Female rdf:type owl:NamedIndividual ;
+        rdfs:label "Female"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2021
 :Fifa2021 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2022 ;
-          :DevBy :EASports .
+          :DevBy :EASports ;
+          :hasTheme :Sports ;
+          rdfs:label "Fifa2021"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2022
 :Fifa2022 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2023 ;
-          :DevBy :EASports .
+          :DevBy :EASports ;
+          :hasTheme :Sports ;
+          rdfs:label "Fifa2022"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2023
 :Fifa2023 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2024 ;
-          :DevBy :EASports .
+          :DevBy :EASports ;
+          :hasTheme :Sports ;
+          rdfs:label "Fifa2023"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2024
 :Fifa2024 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2025 ;
-          :DevBy :EASports .
+          :DevBy :EASports ;
+          :hasTheme :Sports ;
+          rdfs:label "Fifa2024"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fifa2025
 :Fifa2025 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
-          :DevBy :EASports .
+          :DevBy :EASports ;
+          :hasTheme :Sports ;
+          rdfs:label "Fifa2025"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/FifaSeries
 :FifaSeries rdf:type owl:NamedIndividual ,
                      :Series ;
             <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasFirstItem> :Fifa2021 ;
-            <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasLastItem> :Fifa2025 .
+            <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasLastItem> :Fifa2025 ;
+            rdfs:label "FifaSeries"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/FinalFantasyX
 :FinalFantasyX rdf:type owl:NamedIndividual ,
                         :Story_Game ;
                :DevBy :SquareEnix ;
-               :hasTheme :Fantasy .
+               :hasTheme :Fantasy ;
+               rdfs:label "FinalFantasyX"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/GuerrillaGames
 :GuerrillaGames rdf:type owl:NamedIndividual ,
-                         :DevPublisher .
+                         :DevPublisher ;
+                rdfs:label "GuerrillaGames"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Hearthstone
 :Hearthstone rdf:type owl:NamedIndividual ,
                       :Card_Game ;
-             :DevBy :BlizzardEntertainment .
+             :DevBy :BlizzardEntertainment ;
+             :hasTheme :Strategy ,
+                       :Fantasy ;
+             rdfs:label "Hearthstone"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/HorizonZeroDawn
 :HorizonZeroDawn rdf:type owl:NamedIndividual ,
                           :Story_Game ;
-                 :DevBy :GuerrillaGames .
+                 :DevBy :GuerrillaGames ;
+                 rdfs:label "HorizonZeroDawn"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Horror
-:Horror rdf:type owl:NamedIndividual .
+:Horror rdf:type owl:NamedIndividual ;
+        rdfs:label "Horror"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Joel
@@ -712,94 +838,115 @@ es. A game asset that can be used to shoot projectiles"""@en ;
       :isProtagonistOf :TheLastOfUs ;
       :Age "32"^^xsd:int ;
       :Name "Joel" ;
-      :Sex "Male" .
+      :Sex "Male" ;
+      rdfs:label "Joel"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Konami
 :Konami rdf:type owl:NamedIndividual ,
-                 :DevPublisher .
+                 :DevPublisher ;
+        rdfs:label "Konami"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/LeftBehind_DLC
 :LeftBehind_DLC rdf:type owl:NamedIndividual ,
                          :DLC ;
                 :DLCof :TheLastOfUs ;
-                :DevBy :Sony .
+                :DevBy :Sony ;
+                rdfs:label "LeftBehind_DLC"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Male
-:Male rdf:type owl:NamedIndividual .
+:Male rdf:type owl:NamedIndividual ;
+      rdfs:label "Male"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/NotSpecified
-:NotSpecified rdf:type owl:NamedIndividual .
+:NotSpecified rdf:type owl:NamedIndividual ;
+              rdfs:label "NotSpecified"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Octane
 :Octane rdf:type owl:NamedIndividual ,
                  :Car ;
-        :isAssetOf :RocketLeague .
+        :isAssetOf :RocketLeague ;
+        rdfs:label "Octane"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Pistol
 :Pistol rdf:type owl:NamedIndividual ,
                  :Weapon ;
-        :isAssetOf :TheLastOfUs .
+        :isAssetOf :TheLastOfUs ;
+        rdfs:label "Pistol"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Post-Apocalyptic
-:Post-Apocalyptic rdf:type owl:NamedIndividual .
+:Post-Apocalyptic rdf:type owl:NamedIndividual ;
+                  rdfs:label "Post-Apocalyptic"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/PsyonixStudios
-:PsyonixStudios rdf:type owl:NamedIndividual .
+:PsyonixStudios rdf:type owl:NamedIndividual ;
+                rdfs:label "PsyonixStudios"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/PumpActionShotgun
 :PumpActionShotgun rdf:type owl:NamedIndividual ,
                             :Weapon ;
-                   :isAssetOf :RedDeadRedemption2 .
+                   :isAssetOf :RedDeadRedemption2 ;
+                   rdfs:label "PumpActionShotgun"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RedDeadRedemption2
 :RedDeadRedemption2 rdf:type owl:NamedIndividual ,
                              :Story_Game ;
-                    :DevBy :RockstarGames .
+                    :DevBy :RockstarGames ;
+                    rdfs:label "RedDeadRedemption2"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RocketLeague
 :RocketLeague rdf:type owl:NamedIndividual ,
                        :Competitive_Game ;
-              :DevBy :PsyonixStudios .
+              :DevBy :PsyonixStudios ;
+              :hasTheme :Action-Adventure ;
+              rdfs:label "RocketLeague"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RockstarGames
 :RockstarGames rdf:type owl:NamedIndividual ,
-                        :DevPublisher .
+                        :DevPublisher ;
+               rdfs:label "RockstarGames"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sci-Fi
-:Sci-Fi rdf:type owl:NamedIndividual .
+:Sci-Fi rdf:type owl:NamedIndividual ;
+        rdfs:label "Sci-Fi"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sony
-:Sony rdf:type owl:NamedIndividual .
+:Sony rdf:type owl:NamedIndividual ;
+      rdfs:label "Sony"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SquareEnix
-:SquareEnix rdf:type owl:NamedIndividual .
+:SquareEnix rdf:type owl:NamedIndividual ;
+            rdfs:label "SquareEnix"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Texas
 :Texas rdf:type owl:NamedIndividual ,
                 :Map ;
-       :isMapOf :TheLastOfUs .
+       :isMapOf :TheLastOfUs ;
+       rdfs:label "Texas"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/TheLastOfUs
 :TheLastOfUs rdf:type owl:NamedIndividual ,
                       :Story_Game ;
-             :DevBy :Sony .
+             :DevBy :Sony ;
+             :hasTheme :Action-Adventure ,
+                       :Post-Apocalyptic ;
+             rdfs:label "TheLastOfUs"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Tidus
@@ -810,20 +957,25 @@ es. A game asset that can be used to shoot projectiles"""@en ;
        :isProtagonistOf :FinalFantasyX ;
        :Age "21"^^xsd:int ;
        :Name "Tidus" ;
-       :Sex "Male" .
+       :Sex "Male" ;
+       rdfs:label "Tidus"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/UrbanCentral
 :UrbanCentral rdf:type owl:NamedIndividual ,
                        :Map ;
-              :isMapOf :RocketLeague .
+              :isMapOf :RocketLeague ;
+              rdfs:label "UrbanCentral"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Yu-Gi-Oh
 :Yu-Gi-Oh rdf:type owl:NamedIndividual ,
                    :Card_Game ,
                    :Competitive_Game ;
-          :DevBy :Konami .
+          :DevBy :Konami ;
+          :hasTheme :Action-Adventure ,
+                    :Fantasy ;
+          rdfs:label "Yu-Gi-Oh"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Yuna
@@ -834,7 +986,8 @@ es. A game asset that can be used to shoot projectiles"""@en ;
       :isProtagonistOf :FinalFantasyX ;
       :Age "14"^^xsd:int ;
       :Name "Yuna" ;
-      :Sex "Female" .
+      :Sex "Female" ;
+      rdfs:label "Yuna"@en .
 
 
 #################################################################
