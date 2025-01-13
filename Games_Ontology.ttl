@@ -757,17 +757,6 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #    General axioms
 #################################################################
 
-[ owl:intersectionOf ( :Character
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :isProtagonistOf ;
-                         owl:someValuesFrom :Game
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :Character
-] .
-
-
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Car
                 :Card
