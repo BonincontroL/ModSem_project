@@ -38,39 +38,6 @@
                                                                                       ) .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Love
-:Love rdf:type owl:ObjectProperty ;
-      owl:inverseOf :isLovedBy ;
-      rdfs:domain :Lover ;
-      rdfs:range :Character ;
-      rdfs:comment "relation from a lover to a character"@en ;
-      rdfs:label "loves"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#ReciprocallyLoves
-:ReciprocallyLoves rdf:type owl:ObjectProperty ,
-                            owl:SymmetricProperty ;
-                   rdfs:domain :Character ;
-                   rdfs:range :Character ;
-                   rdfs:comment "relation from a character to a character"@en ;
-                   rdfs:label "ReciprocallyLoves"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isLovedBy
-:isLovedBy rdf:type owl:ObjectProperty ;
-           rdfs:domain :Character ;
-           rdfs:range :Lover ;
-           rdfs:comment "relation from a character to a lover"@en ;
-           rdfs:label "isLovedBy"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isThemeOf
-:isThemeOf rdf:type owl:ObjectProperty ;
-           owl:inverseOf :hasTheme ;
-           rdfs:domain :Themes ;
-           rdfs:range :Game .
-
-
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AppearsIn
 :AppearsIn rdf:type owl:ObjectProperty ;
            owl:inverseOf :hasCharacter ;
@@ -96,6 +63,24 @@
        rdfs:label "DevBy"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Love
+:Love rdf:type owl:ObjectProperty ;
+      owl:inverseOf :isLovedBy ;
+      rdfs:domain :Lover ;
+      rdfs:range :Character ;
+      rdfs:comment "relation from a lover to a character"@en ;
+      rdfs:label "loves"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/ReciprocallyLoves
+:ReciprocallyLoves rdf:type owl:ObjectProperty ,
+                            owl:SymmetricProperty ;
+                   rdfs:domain :Character ;
+                   rdfs:range :Character ;
+                   rdfs:comment "relation from a character to a character"@en ;
+                   rdfs:label "ReciprocallyLoves"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SeriesDevBy
 :SeriesDevBy rdf:type owl:ObjectProperty ;
              rdfs:domain :Series ;
@@ -104,7 +89,7 @@
                                       :DevBy
                                     ) ;
              rdfs:comment "relation from a saga to a studio"@en ;
-             rdfs:label "sagaMadeBy"@en .
+             rdfs:label "SerieMadeBy"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/belongsTo
@@ -160,6 +145,7 @@
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasTheme
 :hasTheme rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isThemeOf ;
           rdfs:domain :Game ;
           rdfs:range :Themes ;
           rdfs:comment "Associates a story-driven game with one or more themes"@en ;
@@ -186,6 +172,14 @@
            rdfs:label "isAssetOf"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isLovedBy
+:isLovedBy rdf:type owl:ObjectProperty ;
+           rdfs:domain :Character ;
+           rdfs:range :Lover ;
+           rdfs:comment "relation from a character to a lover"@en ;
+           rdfs:label "isLovedBy"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isMapOf
 :isMapOf rdf:type owl:ObjectProperty ;
          rdfs:domain :Map ;
@@ -201,6 +195,12 @@
                  rdfs:range :Game ;
                  rdfs:comment "relation from a character to a game"@en ;
                  rdfs:label "isProtagonistOf"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isThemeOf
+:isThemeOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Themes ;
+           rdfs:range :Game .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isUsedBy
@@ -299,7 +299,9 @@ An important component of a video game"""@en ;
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Card_Game
 :Card_Game rdf:type owl:Class ;
-           rdfs:subClassOf :Game .
+           rdfs:subClassOf :Game ;
+           rdfs:comment "A game based on cards"@en ;
+           rdfs:label "Card_Game"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Character
@@ -310,7 +312,9 @@ An important component of a video game"""@en ;
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Competitive_Game
 :Competitive_Game rdf:type owl:Class ;
-                  rdfs:subClassOf :Game .
+                  rdfs:subClassOf :Game ;
+                  rdfs:comment "A videogame in which players compete to reach a goal." ;
+                  rdfs:label "Competitive_Game"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/DLC
@@ -344,7 +348,9 @@ Downloadable Content for a videogame. It generally is an expansion to the base v
                                                                 ) ;
                                              rdf:type owl:Class
                                            ] ;
-                       rdfs:subClassOf :Story_Game .
+                       rdfs:subClassOf :Story_Game ;
+                       rdfs:comment "A story game in which the protagonist is of gender: Female" ;
+                       rdfs:label "FemaleProtagonistGame"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Game
@@ -356,9 +362,9 @@ Downloadable Content for a videogame. It generally is an expansion to the base v
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Gender
 :Gender rdf:type owl:Class ;
         owl:equivalentClass [ rdf:type owl:Class ;
-                              owl:oneOf ( :NotSpecified
-                                          :Female
+                              owl:oneOf ( :Female
                                           :Male
+                                          :NotSpecified
                                         )
                             ] ;
         rdfs:comment """The gender of some characters: in the domain of videogames could be something other than male/female.
@@ -405,7 +411,9 @@ Enumerated class for Gender (Female, Male, NotSpecified)""" ;
                                                               ) ;
                                            rdf:type owl:Class
                                          ] ;
-                     rdfs:subClassOf :Story_Game .
+                     rdfs:subClassOf :Story_Game ;
+                     rdfs:comment "A story game in which the protagonist is of gender: Male"@en ;
+                     rdfs:label "MaleProtagonistGame"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Map
@@ -455,7 +463,9 @@ They might share the universe, the topic, the producer, ..."""@en ;
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Story_Game
 :Story_Game rdf:type owl:Class ;
-            rdfs:subClassOf :Game .
+            rdfs:subClassOf :Game ;
+            rdfs:comment "A game in which one or more players are told a story" ;
+            rdfs:label "Story_Game"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Themes
@@ -468,6 +478,7 @@ They might share the universe, the topic, the producer, ..."""@en ;
                                           :Sci-Fi
                                         )
                             ] ;
+        rdfs:comment "A narrative themes or genres for a Game (e.g. fantasy, western, horror, etc.)"@en ;
         rdfs:label "Themes"@en .
 
 
@@ -504,72 +515,6 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #################################################################
 #    Individuals
 #################################################################
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#FinalFantasyX
-:FinalFantasyX rdf:type owl:NamedIndividual ,
-                        :Story_Game ;
-               :DevBy :SquareEnix ;
-               :hasTheme :Fantasy .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Joel
-:Joel rdf:type owl:NamedIndividual ,
-               :Character ;
-      :hasSex :Male ;
-      :isProtagonistOf :TheLastOfUs .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#NotSpecified
-:NotSpecified rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Pistol
-:Pistol rdf:type owl:NamedIndividual ,
-                 :Weapon ;
-        :isAssetOf :TheLastOfUs .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Sony
-:Sony rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#SquareEnix
-:SquareEnix rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Texas
-:Texas rdf:type owl:NamedIndividual ,
-                :Map ;
-       :isMapOf :TheLastOfUs .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#TheLastOfUs
-:TheLastOfUs rdf:type owl:NamedIndividual ,
-                      :Story_Game ;
-             :DevBy :Sony .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Tidus
-:Tidus rdf:type owl:NamedIndividual ,
-                :Character ;
-       :Love :Yuna ;
-       :hasSex :Male ;
-       :isProtagonistOf :FinalFantasyX ;
-       :Age "21"^^xsd:int ;
-       :Name "Tidus" ;
-       :Sex "Male" .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Yuna
-:Yuna rdf:type owl:NamedIndividual ,
-               :Character ;
-      :Love :Tidus ;
-      :hasSex :Female ;
-      :isProtagonistOf :FinalFantasyX ;
-      :Age "14"^^xsd:int ;
-      :Name "Yuna" ;
-      :Sex "Female" .
-
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
 :Action-Adventure rdf:type owl:NamedIndividual .
@@ -658,6 +603,13 @@ es. A game asset that can be used to shoot projectiles"""@en ;
             <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasLastItem> :Fifa2025 .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/FinalFantasyX
+:FinalFantasyX rdf:type owl:NamedIndividual ,
+                        :Story_Game ;
+               :DevBy :SquareEnix ;
+               :hasTheme :Fantasy .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/GuerrillaGames
 :GuerrillaGames rdf:type owl:NamedIndividual ,
                          :DevPublisher .
@@ -679,6 +631,13 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Horror rdf:type owl:NamedIndividual .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Joel
+:Joel rdf:type owl:NamedIndividual ,
+               :Character ;
+      :hasSex :Male ;
+      :isProtagonistOf :TheLastOfUs .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Konami
 :Konami rdf:type owl:NamedIndividual ,
                  :DevPublisher .
@@ -688,10 +647,20 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Male rdf:type owl:NamedIndividual .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/NotSpecified
+:NotSpecified rdf:type owl:NamedIndividual .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Octane
 :Octane rdf:type owl:NamedIndividual ,
                  :Car ;
         :isAssetOf :RocketLeague .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Pistol
+:Pistol rdf:type owl:NamedIndividual ,
+                 :Weapon ;
+        :isAssetOf :TheLastOfUs .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Post-Apocalyptic
@@ -729,6 +698,37 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Sci-Fi rdf:type owl:NamedIndividual .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sony
+:Sony rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SquareEnix
+:SquareEnix rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Texas
+:Texas rdf:type owl:NamedIndividual ,
+                :Map ;
+       :isMapOf :TheLastOfUs .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/TheLastOfUs
+:TheLastOfUs rdf:type owl:NamedIndividual ,
+                      :Story_Game ;
+             :DevBy :Sony .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Tidus
+:Tidus rdf:type owl:NamedIndividual ,
+                :Character ;
+       :Love :Yuna ;
+       :hasSex :Male ;
+       :isProtagonistOf :FinalFantasyX ;
+       :Age "21"^^xsd:int ;
+       :Name "Tidus" ;
+       :Sex "Male" .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/UrbanCentral
 :UrbanCentral rdf:type owl:NamedIndividual ,
                        :Map ;
@@ -740,6 +740,17 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                    :Card_Game ,
                    :Competitive_Game ;
           :DevBy :Konami .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Yuna
+:Yuna rdf:type owl:NamedIndividual ,
+               :Character ;
+      :Love :Tidus ;
+      :hasSex :Female ;
+      :isProtagonistOf :FinalFantasyX ;
+      :Age "14"^^xsd:int ;
+      :Name "Yuna" ;
+      :Sex "Female" .
 
 
 #################################################################
