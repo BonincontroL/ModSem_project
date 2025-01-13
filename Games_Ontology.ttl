@@ -42,23 +42,6 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
                                                                                       ) .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#killBy
-:killBy rdf:type owl:ObjectProperty ;
-        owl:inverseOf :kills ;
-        rdfs:domain :Character ;
-        rdfs:range :Killer ;
-        rdfs:comment "relation from a character to a killer" ;
-        rdfs:label "KilledBy"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#kills
-:kills rdf:type owl:ObjectProperty ;
-       rdfs:domain :Killer ;
-       rdfs:range :Character ;
-       rdfs:comment "Relation from a killer to a character"@en ;
-       rdfs:label "kills"@en .
-
-
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AppearsIn
 :AppearsIn rdf:type owl:ObjectProperty ;
            owl:inverseOf :hasCharacter ;
@@ -256,6 +239,23 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
              rdfs:range :Game ;
              rdfs:comment "A character is warrior of a game"@en ;
              rdfs:label "isWarriorOf"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/killBy
+:killBy rdf:type owl:ObjectProperty ;
+        owl:inverseOf :kills ;
+        rdfs:domain :Character ;
+        rdfs:range :Killer ;
+        rdfs:comment "relation from a character to a killer" ;
+        rdfs:label "KilledBy"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/kills
+:kills rdf:type owl:ObjectProperty ;
+       rdfs:domain :Killer ;
+       rdfs:range :Character ;
+       rdfs:comment "Relation from a killer to a character"@en ;
+       rdfs:label "kills"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/makes
@@ -570,16 +570,6 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#AnthonyForeman
-:AnthonyForeman rdf:type owl:NamedIndividual ,
-                         :Character ;
-                :AppearsIn :RedDeadRedemption2 ;
-                :hasSex :Male ;
-                :Age "35"^^xsd:int ;
-                :Name "AnthonyForeman" ;
-                :Sex "Male" .
-
-
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
 :Action-Adventure rdf:type owl:NamedIndividual .
 
@@ -594,13 +584,26 @@ es. A game asset that can be used to shoot projectiles"""@en ;
       :Name "Aloy" .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AnthonyForeman
+:AnthonyForeman rdf:type owl:NamedIndividual ,
+                         :Character ;
+                :AppearsIn :RedDeadRedemption2 ;
+                :hasSex :Male ;
+                :Age "35"^^xsd:int ;
+                :Name "AnthonyForeman" ;
+                :Sex "Male" .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/ArthurMorgan
 :ArthurMorgan rdf:type owl:NamedIndividual ,
                        :Character ;
-              :kills :AnthonyForeman ;
               :hasSex :Male ;
               :isProtagonistOf :RedDeadRedemption2 ;
-              :usesWeapon :PumpActionShotgun .
+              :kills :AnthonyForeman ;
+              :usesWeapon :PumpActionShotgun ;
+              :Age "53"^^xsd:int ;
+              :Name "ArthurMorgan" ;
+              :Sex "Male" .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/BlizzardEntertainment
@@ -706,7 +709,10 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Joel rdf:type owl:NamedIndividual ,
                :Character ;
       :hasSex :Male ;
-      :isProtagonistOf :TheLastOfUs .
+      :isProtagonistOf :TheLastOfUs ;
+      :Age "32"^^xsd:int ;
+      :Name "Joel" ;
+      :Sex "Male" .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Konami
