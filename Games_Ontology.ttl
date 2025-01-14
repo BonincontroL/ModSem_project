@@ -317,28 +317,20 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isMultiPlayer
-:isMultiPlayer rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Game ;
-               rdfs:range xsd:boolean ;
-               rdfs:comment "Indicates whether a game supports multiplayer. This property is used to specify whether a game is designed to be played by multiple users simultaneously, either cooperatively or competitively, either locally or online."@en ;
-               rdfs:label "MultiPlayerMode"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#isSinglePlayer
-:isSinglePlayer rdf:type owl:DatatypeProperty ;
-                rdfs:domain :Game ;
-                rdfs:range xsd:boolean ;
-                rdfs:comment "Indicates whether a game supports a single-player mode. This property is used to specify whether a game is designed to be played by a single user, with an experience focused on narrative, personal challenge, or individual exploration." ;
-                rdfs:label "SinglePlayerMode"@en .
-
-
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Age
 :Age rdf:type owl:DatatypeProperty ;
      rdfs:domain :Character ;
      rdfs:range xsd:int ;
      rdfs:comment "The number of years a character has existed for."@en ;
      rdfs:label "Age"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/MultiPlayerMode
+:MultiPlayerMode rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Game ;
+                 rdfs:range xsd:boolean ;
+                 rdfs:comment "Indicates whether a game supports multiplayer. This property is used to specify whether a game is designed to be played by multiple users simultaneously, either cooperatively or competitively, either locally or online."@en ;
+                 rdfs:label "MultiPlayerMode"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Name
@@ -357,6 +349,14 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
      rdfs:label "Sex"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SinglePlayerMode
+:SinglePlayerMode rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Game ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:comment "Indicates whether a game supports a single-player mode. This property is used to specify whether a game is designed to be played by a single user, with an experience focused on narrative, personal challenge, or individual exploration." ;
+                  rdfs:label "SinglePlayerMode"@en .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -365,20 +365,6 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
 <http://schema.org/Product> rdf:type owl:Class ;
                             rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/list.owl#ListItem> ;
                             rdfs:comment "Represents something that can be sold"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#MultiPlayerGame
-:MultiPlayerGame rdf:type owl:Class ;
-                 rdfs:subClassOf :Game ;
-                 rdfs:comment "Video game that involves multiple players simultaneously, in cooperative or competitive mode, locally or online."@en ;
-                 rdfs:label "MultiPlayerGame"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#SinglePlayerGame
-:SinglePlayerGame rdf:type owl:Class ;
-                  rdfs:subClassOf :Game ;
-                  rdfs:comment "Video game designed for a single player, focused on narrative and individual challenges."@en ;
-                  rdfs:label "SinglePlayerGame"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Adult
@@ -552,6 +538,13 @@ Enumerated class for Gender (Female, Male, NotSpecified)""" ;
        rdfs:label "Minor"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/MultiPlayerGame
+:MultiPlayerGame rdf:type owl:Class ;
+                 rdfs:subClassOf :Game ;
+                 rdfs:comment "Video game that involves multiple players simultaneously, in cooperative or competitive mode, locally or online."@en ;
+                 rdfs:label "MultiPlayerGame"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Protagonist
 :Protagonist rdf:type owl:Class ;
              owl:equivalentClass [ owl:intersectionOf ( :Character
@@ -575,6 +568,13 @@ Usually the  one the player plays as.""" ;
 A list of games that have something in common and have an intrinsic order.
 They might share the universe, the topic, the producer, ..."""@en ;
         rdfs:label "Series"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SinglePlayerGame
+:SinglePlayerGame rdf:type owl:Class ;
+                  rdfs:subClassOf :Game ;
+                  rdfs:comment "Video game designed for a single player, focused on narrative and individual challenges."@en ;
+                  rdfs:label "SinglePlayerGame"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sniper
@@ -740,7 +740,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2022 ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
-          :isMultiPlayer "true"^^xsd:boolean ;
+          :MultiPlayerMode "true"^^xsd:boolean ;
           rdfs:label "Fifa2021"@en .
 
 
@@ -750,7 +750,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2023 ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
-          :isMultiPlayer "true"^^xsd:boolean ;
+          :MultiPlayerMode "true"^^xsd:boolean ;
           rdfs:label "Fifa2022"@en .
 
 
@@ -760,7 +760,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2024 ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
-          :isMultiPlayer "true"^^xsd:boolean ;
+          :MultiPlayerMode "true"^^xsd:boolean ;
           rdfs:label "Fifa2023"@en .
 
 
@@ -770,7 +770,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2025 ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
-          :isMultiPlayer "true"^^xsd:boolean ;
+          :MultiPlayerMode "true"^^xsd:boolean ;
           rdfs:label "Fifa2024"@en .
 
 
@@ -779,7 +779,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                    :Competitive_Game ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
-          :isMultiPlayer "true"^^xsd:boolean ;
+          :MultiPlayerMode "true"^^xsd:boolean ;
           rdfs:label "Fifa2025"@en .
 
 
@@ -796,7 +796,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                         :Story_Game ;
                :DevBy :SquareEnix ;
                :hasTheme :Fantasy ;
-               :isSinglePlayer "true"^^xsd:boolean ;
+               :SinglePlayerMode "true"^^xsd:boolean ;
                rdfs:label "FinalFantasyX"@en .
 
 
@@ -812,7 +812,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
              :DevBy :BlizzardEntertainment ;
              :hasTheme :Fantasy ,
                        :Strategy ;
-             :isMultiPlayer "true"^^xsd:boolean ;
+             :MultiPlayerMode "true"^^xsd:boolean ;
              rdfs:label "Hearthstone"@en .
 
 
@@ -864,8 +864,8 @@ es. A game asset that can be used to shoot projectiles"""@en ;
            :DevBy :MojangStudios ;
            :hasTheme :Action-Adventure ,
                      :Sandbox ;
-           :isMultiPlayer "true"^^xsd:boolean ;
-           :isSinglePlayer "true"^^xsd:boolean ;
+           :MultiPlayerMode "true"^^xsd:boolean ;
+           :SinglePlayerMode "true"^^xsd:boolean ;
            rdfs:label "Minecraft"@en .
 
 
@@ -914,7 +914,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :RedDeadRedemption2 rdf:type owl:NamedIndividual ,
                              :Story_Game ;
                     :DevBy :RockstarGames ;
-                    :isSinglePlayer "true"^^xsd:boolean ;
+                    :SinglePlayerMode "true"^^xsd:boolean ;
                     rdfs:label "RedDeadRedemption2"@en .
 
 
@@ -923,8 +923,8 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                        :Competitive_Game ;
               :DevBy :PsyonixStudios ;
               :hasTheme :Action-Adventure ;
-              :isMultiPlayer "true"^^xsd:boolean ;
-              :isSinglePlayer "true"^^xsd:boolean ;
+              :MultiPlayerMode "true"^^xsd:boolean ;
+              :SinglePlayerMode "true"^^xsd:boolean ;
               rdfs:label "RocketLeague"@en .
 
 
@@ -988,7 +988,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
              :DevBy :Sony ;
              :hasTheme :Action-Adventure ,
                        :Post-Apocalyptic ;
-             :isSinglePlayer "true"^^xsd:boolean ;
+             :SinglePlayerMode "true"^^xsd:boolean ;
              rdfs:label "TheLastOfUs"@en .
 
 
@@ -1018,7 +1018,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :DevBy :Konami ;
           :hasTheme :Action-Adventure ,
                     :Fantasy ;
-          :isMultiPlayer "true"^^xsd:boolean ;
+          :MultiPlayerMode "true"^^xsd:boolean ;
           rdfs:label "Yu-Gi-Oh"@en .
 
 
@@ -1141,15 +1141,15 @@ es. A game asset that can be used to shoot projectiles"""@en ;
    rdfs:label "MultiPlayerGame" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :MultiPlayerMode ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
                                                      ] ;
                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :isMultiPlayer ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x
                                                                 ] ;
                                                       rdf:rest rdf:nil
                                                     ]
@@ -1168,15 +1168,15 @@ es. A game asset that can be used to shoot projectiles"""@en ;
    rdfs:label "SinglePlayerGame" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :SinglePlayerMode ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
                                                      ] ;
                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :isSinglePlayer ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x
                                                                 ] ;
                                                       rdf:rest rdf:nil
                                                     ]
