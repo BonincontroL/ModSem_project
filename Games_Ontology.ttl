@@ -336,7 +336,7 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Name
 :Name rdf:type owl:DatatypeProperty ;
       rdfs:domain owl:Thing ;
-      rdfs:range xsd:string ;
+      rdfs:range rdfs:Literal ;
       rdfs:comment "The name of something"@en ;
       rdfs:label "Name"@en .
 
@@ -652,7 +652,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
 :Action-Adventure rdf:type owl:NamedIndividual ;
-                  :Name "Action-Adventure" ;
+                  :Name "Action-Adventure"@en ;
                   rdfs:label "Action-Adventure"@en .
 
 
@@ -663,7 +663,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
       :isProtagonistOf :HorizonZeroDawn ;
       :isWarriorOf :HorizonZeroDawn ;
       :Age "22"^^xsd:int ;
-      :Name "Aloy" ;
+      :Name "Aloy"@en ;
       rdfs:label "Aloy"@en .
 
 
@@ -673,7 +673,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                 :AppearsIn :RedDeadRedemption2 ;
                 :hasSex :Male ;
                 :Age "35"^^xsd:int ;
-                :Name "AnthonyForeman" ;
+                :Name "AnthonyForeman"@en ;
                 :Sex "Male" ;
                 rdfs:label "AntonyForeman"@en .
 
@@ -686,7 +686,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
               :kills :AnthonyForeman ;
               :usesWeapon :PumpActionShotgun ;
               :Age "53"^^xsd:int ;
-              :Name "ArthurMorgan" ;
+              :Name "ArthurMorgan"@en ;
               :Sex "Male" ;
               rdfs:label "ArthurMorgan"@en .
 
@@ -694,7 +694,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/BlizzardEntertainment
 :BlizzardEntertainment rdf:type owl:NamedIndividual ,
                                 :DevPublisher ;
-                       :Name "BlizzardEntertainment" ;
+                       :Name "BlizzardEntertainment"@en ;
                        rdfs:label "BlizzardEntertainment"@en .
 
 
@@ -703,7 +703,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
               :Character ;
      :AppearsIn :Minecraft ;
      :isVillagerOf :Minecraft ;
-     :Name "Bob" ;
+     :Name "Bob"@en ;
      rdfs:label "Bob"@en .
 
 
@@ -718,7 +718,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/EASports
 :EASports rdf:type owl:NamedIndividual ,
                    :DevPublisher ;
-          :Name "EASports" ;
+          :Name "EASports"@en ;
           rdfs:label "EASports"@en .
 
 
@@ -726,18 +726,19 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Exodia rdf:type owl:NamedIndividual ,
                  :Card ;
         :isAssetOf :Yu-Gi-Oh ;
-        :Name "Exodia" ;
+        :Name "Exodia"@en ;
         rdfs:label "Exodia"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Fantasy
 :Fantasy rdf:type owl:NamedIndividual ;
-         :Name "Fantasy" ;
+         :Name "Fantasy"@en ;
          rdfs:label "Fantasy"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Female
 :Female rdf:type owl:NamedIndividual ;
+        :Name "Female"@en ;
         rdfs:label "Female"@en .
 
 
@@ -748,7 +749,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
-          :Name "Fifa2021" ;
+          :Name "Fifa2021"@en ;
           rdfs:label "Fifa2021"@en .
 
 
@@ -759,7 +760,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
-          :Name "Fifa2022" ;
+          :Name "Fifa2022"@en ;
           rdfs:label "Fifa2022"@en .
 
 
@@ -770,7 +771,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
-          :Name "Fifa2023" ;
+          :Name "Fifa2023"@en ;
           rdfs:label "Fifa2023"@en .
 
 
@@ -781,7 +782,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
-          :Name "Fifa2024" ;
+          :Name "Fifa2024"@en ;
           rdfs:label "Fifa2024"@en .
 
 
@@ -791,7 +792,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :DevBy :EASports ;
           :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
-          :Name "Fifa2025" ;
+          :Name "Fifa2025"@en ;
           rdfs:label "Fifa2025"@en .
 
 
@@ -800,7 +801,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                      :Series ;
             <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasFirstItem> :Fifa2021 ;
             <http://www.ontologydesignpatterns.org/cp/owl/list.owl#hasLastItem> :Fifa2025 ;
-            :Name "FifaSeries" ;
+            :Name "FifaSeries"@en ;
             rdfs:label "FifaSeries"@en .
 
 
@@ -809,7 +810,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                         :Story_Game ;
                :DevBy :SquareEnix ;
                :hasTheme :Fantasy ;
-               :Name "FinalFantasyX" ;
+               :Name "FinalFantasyX"@en ;
                :SinglePlayerMode "true"^^xsd:boolean ;
                rdfs:label "FinalFantasyX"@en .
 
@@ -817,7 +818,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/GuerrillaGames
 :GuerrillaGames rdf:type owl:NamedIndividual ,
                          :DevPublisher ;
-                :Name "GuerrillaGames" ;
+                :Name "GuerrillaGames"@en ;
                 rdfs:label "GuerrillaGames"@en .
 
 
@@ -828,7 +829,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
              :hasTheme :Fantasy ,
                        :Strategy ;
              :MultiPlayerMode "true"^^xsd:boolean ;
-             :Name "HearthStone" ;
+             :Name "HearthStone"@en ;
              rdfs:label "Hearthstone"@en .
 
 
@@ -836,13 +837,13 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :HorizonZeroDawn rdf:type owl:NamedIndividual ,
                           :Story_Game ;
                  :DevBy :GuerrillaGames ;
-                 :Name "HorizonZeroDawn" ;
+                 :Name "HorizonZeroDawn"@en ;
                  rdfs:label "HorizonZeroDawn"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Horror
 :Horror rdf:type owl:NamedIndividual ;
-        :Name "Horror" ;
+        :Name "Horror"@en ;
         rdfs:label "Horror"@en .
 
 
@@ -852,7 +853,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
       :hasSex :Male ;
       :isProtagonistOf :TheLastOfUs ;
       :Age "32"^^xsd:int ;
-      :Name "Joel" ;
+      :Name "Joel"@en ;
       :Sex "Male" ;
       rdfs:label "Joel"@en .
 
@@ -860,7 +861,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Konami
 :Konami rdf:type owl:NamedIndividual ,
                  :DevPublisher ;
-        :Name "Konami" ;
+        :Name "Konami"@en ;
         rdfs:label "Konami"@en .
 
 
@@ -869,12 +870,13 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                          :DLC ;
                 :DLCof :TheLastOfUs ;
                 :DevBy :Sony ;
-                :Name "LeftBehind_DLC" ;
+                :Name "LeftBehind_DLC"@en ;
                 rdfs:label "LeftBehind_DLC"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Male
 :Male rdf:type owl:NamedIndividual ;
+      :Name "Male"@en ;
       rdfs:label "Male"@en .
 
 
@@ -885,19 +887,20 @@ es. A game asset that can be used to shoot projectiles"""@en ;
            :hasTheme :Action-Adventure ,
                      :Sandbox ;
            :MultiPlayerMode "true"^^xsd:boolean ;
-           :Name "Minecraft" ;
+           :Name "Minecraft"@en ;
            :SinglePlayerMode "true"^^xsd:boolean ;
            rdfs:label "Minecraft"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/MojangStudios
 :MojangStudios rdf:type owl:NamedIndividual ;
-               :Name "MojangStudios" ;
+               :Name "MojangStudios"@en ;
                rdfs:label "MojangStudios"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/NotSpecified
 :NotSpecified rdf:type owl:NamedIndividual ;
+              :Name "NotSpecified"@en ;
               rdfs:label "NotSpecified"@en .
 
 
@@ -905,7 +908,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Octane rdf:type owl:NamedIndividual ,
                  :Car ;
         :isAssetOf :RocketLeague ;
-        :Name "Octane" ;
+        :Name "Octane"@en ;
         rdfs:label "Octane"@en .
 
 
@@ -913,19 +916,19 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Pistol rdf:type owl:NamedIndividual ,
                  :Weapon ;
         :isAssetOf :TheLastOfUs ;
-        :Name "Pistol" ;
+        :Name "Pistol"@en ;
         rdfs:label "Pistol"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Post-Apocalyptic
 :Post-Apocalyptic rdf:type owl:NamedIndividual ;
-                  :Name "Post-Apocalyptic" ;
+                  :Name "Post-Apocalyptic"@en ;
                   rdfs:label "Post-Apocalyptic"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/PsyonixStudios
 :PsyonixStudios rdf:type owl:NamedIndividual ;
-                :Name "PsyonixStudios" ;
+                :Name "PsyonixStudios"@en ;
                 rdfs:label "PsyonixStudios"@en .
 
 
@@ -933,7 +936,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :PumpActionShotgun rdf:type owl:NamedIndividual ,
                             :Weapon ;
                    :isAssetOf :RedDeadRedemption2 ;
-                   :Name "PumpActionShotgun" ;
+                   :Name "PumpActionShotgun"@en ;
                    rdfs:label "PumpActionShotgun"@en .
 
 
@@ -941,7 +944,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :RedDeadRedemption2 rdf:type owl:NamedIndividual ,
                              :Story_Game ;
                     :DevBy :RockstarGames ;
-                    :Name "RedDeadRedemption2" ;
+                    :Name "RedDeadRedemption2"@en ;
                     :SinglePlayerMode "true"^^xsd:boolean ;
                     rdfs:label "RedDeadRedemption2"@en .
 
@@ -952,7 +955,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
               :DevBy :PsyonixStudios ;
               :hasTheme :Action-Adventure ;
               :MultiPlayerMode "true"^^xsd:boolean ;
-              :Name "RocketLeague" ;
+              :Name "RocketLeague"@en ;
               :SinglePlayerMode "true"^^xsd:boolean ;
               rdfs:label "RocketLeague"@en .
 
@@ -960,37 +963,37 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RockstarGames
 :RockstarGames rdf:type owl:NamedIndividual ,
                         :DevPublisher ;
-               :Name "RockstarGames" ;
+               :Name "RockstarGames"@en ;
                rdfs:label "RockstarGames"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sandbox
 :Sandbox rdf:type owl:NamedIndividual ;
-         :Name "Sandbox" ;
+         :Name "Sandbox"@en ;
          rdfs:label "Sandbox"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sci-Fi
 :Sci-Fi rdf:type owl:NamedIndividual ;
-        :Name "Sci-Fi" ;
+        :Name "Sci-Fi"@en ;
         rdfs:label "Sci-Fi"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sony
 :Sony rdf:type owl:NamedIndividual ;
-      :Name "Sony" ;
+      :Name "Sony"@en ;
       rdfs:label "Sony"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sports
 :Sports rdf:type owl:NamedIndividual ;
-        :Name "Sport" ;
+        :Name "Sport"@en ;
         rdfs:label "Sport"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SquareEnix
 :SquareEnix rdf:type owl:NamedIndividual ;
-            :Name "SquareEnix" ;
+            :Name "SquareEnix"@en ;
             rdfs:label "SquareEnix"@en .
 
 
@@ -1000,14 +1003,14 @@ es. A game asset that can be used to shoot projectiles"""@en ;
        :hasSex :Male ;
        :isProtagonistOf :Minecraft ;
        :Age "20"^^xsd:int ;
-       :Name "Steve" ;
+       :Name "Steve"@en ;
        :Sex "Male" ;
        rdfs:label "Steve"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Strategy
 :Strategy rdf:type owl:NamedIndividual ;
-          :Name "Strategy" ;
+          :Name "Strategy"@en ;
           rdfs:label "Strategy"@en .
 
 
@@ -1015,7 +1018,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Texas rdf:type owl:NamedIndividual ,
                 :Map ;
        :isMapOf :TheLastOfUs ;
-       :Name "Texas" ;
+       :Name "Texas"@en ;
        rdfs:label "Texas"@en .
 
 
@@ -1025,7 +1028,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
              :DevBy :Sony ;
              :hasTheme :Action-Adventure ,
                        :Post-Apocalyptic ;
-             :Name "TheLastOfUs" ;
+             :Name "TheLastOfUs"@en ;
              :SinglePlayerMode "true"^^xsd:boolean ;
              rdfs:label "TheLastOfUs"@en .
 
@@ -1037,7 +1040,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
        :hasSex :Male ;
        :isProtagonistOf :FinalFantasyX ;
        :Age "21"^^xsd:int ;
-       :Name "Tidus" ;
+       :Name "Tidus"@en ;
        :Sex "Male" ;
        rdfs:label "Tidus"@en .
 
@@ -1046,7 +1049,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :UrbanCentral rdf:type owl:NamedIndividual ,
                        :Map ;
               :isMapOf :RocketLeague ;
-              :Name "UrbanCentral" ;
+              :Name "UrbanCentral"@en ;
               rdfs:label "UrbanCentral"@en .
 
 
@@ -1058,7 +1061,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :hasTheme :Action-Adventure ,
                     :Fantasy ;
           :MultiPlayerMode "true"^^xsd:boolean ;
-          :Name "Yu-Gi-Oh" ;
+          :Name "Yu-Gi-Oh"@en ;
           rdfs:label "Yu-Gi-Oh"@en .
 
 
@@ -1069,7 +1072,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
       :hasSex :Female ;
       :isProtagonistOf :FinalFantasyX ;
       :Age "14"^^xsd:int ;
-      :Name "Yuna" ;
+      :Name "Yuna"@en ;
       :Sex "Female" ;
       rdfs:label "Yuna"@en .
 
