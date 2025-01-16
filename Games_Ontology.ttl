@@ -64,13 +64,13 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
                                                                                       ) .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasRelative
-:hasRelative rdf:type owl:ObjectProperty ,
-                      owl:SymmetricProperty ;
-             rdfs:domain :Character ;
-             rdfs:range :Character ;
-             rdfs:comment "relation from a character to a character"@en ;
-             rdfs:label "hasRelative"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#rivalOf
+:rivalOf rdf:type owl:ObjectProperty ,
+                  owl:SymmetricProperty ;
+         rdfs:domain :Character ;
+         rdfs:range :Character ;
+         rdfs:comment "relationship between rival characters"@en ;
+         rdfs:label "rivalOf"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AppearsIn
@@ -185,6 +185,15 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
                 rdfs:range :Character ;
                 rdfs:comment "relation from a game to a character" ;
                 rdfs:label "hasProtagonist"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasRelative
+:hasRelative rdf:type owl:ObjectProperty ,
+                      owl:SymmetricProperty ;
+             rdfs:domain :Character ;
+             rdfs:range :Character ;
+             rdfs:comment "relation from a character to a character"@en ;
+             rdfs:label "hasRelative"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/hasSex
@@ -659,18 +668,27 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#SugorokuMutou
-:SugorokuMutou rdf:type owl:NamedIndividual ,
-                        :Character ;
-               :hasRelative :YugiMutou ;
-               :AppearsIn :Yu-Gi-Oh ;
-               :hasSex :Male ;
-               :Age "70"^^xsd:int ;
-               :Name "SugorokuMutou"@en ;
-               :Sex "Male" ;
-               rdfs:comment """Character
-Yugi's Grandfather"""@en ;
-               rdfs:label "SugorokuMutou"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#BlueEyesWhiteDragon
+:BlueEyesWhiteDragon rdf:type owl:NamedIndividual ,
+                              :Card ;
+                     :isAssetOf :Yu-Gi-Oh ;
+                     :Name "BlueEyesWhiteDragon"@en ;
+                     rdfs:comment "Blue Eyes White Dragon is a card from the game"@en ;
+                     rdfs:label "BlueEyesWhiteDragon"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#SetoKaiba
+:SetoKaiba rdf:type owl:NamedIndividual ,
+                    :Character ;
+           :rivalOf :YugiMutou ;
+           :AppearsIn :Yu-Gi-Oh ;
+           :hasAsset :BlueEyesWhiteDragon ;
+           :hasSex :Male ;
+           :Age "16"^^xsd:int ;
+           :Name "SetoKaiba"@en ;
+           :Sex "Male" ;
+           rdfs:comment "Character - Yugi Mutou's rival"@en ;
+           rdfs:label "SetoKaiba"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
@@ -1111,6 +1129,20 @@ Yugi's Grandfather"""@en ;
           :Name "Strategy"@en ;
           rdfs:comment "Genre of a game"@en ;
           rdfs:label "Strategy"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SugorokuMutou
+:SugorokuMutou rdf:type owl:NamedIndividual ,
+                        :Character ;
+               :AppearsIn :Yu-Gi-Oh ;
+               :hasRelative :YugiMutou ;
+               :hasSex :Male ;
+               :Age "70"^^xsd:int ;
+               :Name "SugorokuMutou"@en ;
+               :Sex "Male" ;
+               rdfs:comment """Character
+Yugi's Grandfather"""@en ;
+               rdfs:label "SugorokuMutou"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/TeaGardner
