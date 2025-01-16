@@ -64,6 +64,15 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
                                                                                       ) .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#hasRelative
+:hasRelative rdf:type owl:ObjectProperty ,
+                      owl:SymmetricProperty ;
+             rdfs:domain :Character ;
+             rdfs:range :Character ;
+             rdfs:comment "relation from a character to a character"@en ;
+             rdfs:label "hasRelative"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AppearsIn
 :AppearsIn rdf:type owl:ObjectProperty ;
            owl:inverseOf :hasCharacter ;
@@ -650,58 +659,18 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Ellie
-:Ellie rdf:type owl:NamedIndividual ,
-                :Sniper ;
-       :AppearsIn :TheLastOfUs ;
-       :hasSex :Female ;
-       :Age "28"^^xsd:int ;
-       :Name "Ellie"@en ;
-       :Sex "Female" ;
-       rdfs:comment "Game character"@en ;
-       rdfs:label "Ellie"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#LionelMessi
-:LionelMessi rdf:type owl:NamedIndividual ,
-                      :Character ;
-             :AppearsIn :Fifa2021 ,
-                        :Fifa2022 ,
-                        :Fifa2023 ,
-                        :Fifa2024 ,
-                        :Fifa2025 ;
-             :hasSex :Male ;
-             :Age "37"^^xsd:int ;
-             :Name "LionelMessi"@en ;
-             :Sex "Male" ;
-             rdfs:comment "Game character"@en ;
-             rdfs:label "LionelMessi"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#TeaGardner
-:TeaGardner rdf:type owl:NamedIndividual ,
-                     :Character ;
-            :AppearsIn :Yu-Gi-Oh ;
-            :hasSex :Female ;
-            :Age "16"^^xsd:int ;
-            :Name "TeaGardner"@en ;
-            :Sex "Female" ;
-            rdfs:comment "Game character"@en ;
-            rdfs:label "TeaGardner"@en .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#YugiMutou
-:YugiMutou rdf:type owl:NamedIndividual ,
-                    :Character ;
-           :Love :TeaGardner ;
-           :hasAsset :Exodia ;
-           :hasSex :Male ;
-           :isProtagonistOf :Yu-Gi-Oh ;
-           :Age "16"^^xsd:int ;
-           :Name "YugiMutou"@en ;
-           :Sex "Male" ;
-           rdfs:comment "Game character"@en ;
-           rdfs:label "YugiMutou"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#SugorokuMutou
+:SugorokuMutou rdf:type owl:NamedIndividual ,
+                        :Character ;
+               :hasRelative :YugiMutou ;
+               :AppearsIn :Yu-Gi-Oh ;
+               :hasSex :Male ;
+               :Age "70"^^xsd:int ;
+               :Name "SugorokuMutou"@en ;
+               :Sex "Male" ;
+               rdfs:comment """Character
+Yugi's Grandfather"""@en ;
+               rdfs:label "SugorokuMutou"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
@@ -785,6 +754,18 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :Name "EASports"@en ;
           rdfs:comment "Developer and publishing company"@en ;
           rdfs:label "EASports"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Ellie
+:Ellie rdf:type owl:NamedIndividual ,
+                :Sniper ;
+       :AppearsIn :TheLastOfUs ;
+       :hasSex :Female ;
+       :Age "28"^^xsd:int ;
+       :Name "Ellie"@en ;
+       :Sex "Female" ;
+       rdfs:comment "Game character"@en ;
+       rdfs:label "Ellie"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Exodia
@@ -957,6 +938,22 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                 rdfs:label "LeftBehind_DLC"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/LionelMessi
+:LionelMessi rdf:type owl:NamedIndividual ,
+                      :Character ;
+             :AppearsIn :Fifa2021 ,
+                        :Fifa2022 ,
+                        :Fifa2023 ,
+                        :Fifa2024 ,
+                        :Fifa2025 ;
+             :hasSex :Male ;
+             :Age "37"^^xsd:int ;
+             :Name "LionelMessi"@en ;
+             :Sex "Male" ;
+             rdfs:comment "Game character"@en ;
+             rdfs:label "LionelMessi"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Male
 :Male rdf:type owl:NamedIndividual ;
       :Name "Male"@en ;
@@ -1116,6 +1113,18 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           rdfs:label "Strategy"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/TeaGardner
+:TeaGardner rdf:type owl:NamedIndividual ,
+                     :Character ;
+            :AppearsIn :Yu-Gi-Oh ;
+            :hasSex :Female ;
+            :Age "16"^^xsd:int ;
+            :Name "TeaGardner"@en ;
+            :Sex "Female" ;
+            rdfs:comment "Game character"@en ;
+            rdfs:label "TeaGardner"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Texas
 :Texas rdf:type owl:NamedIndividual ,
                 :Map ;
@@ -1170,6 +1179,20 @@ es. A game asset that can be used to shoot projectiles"""@en ;
           :Name "Yu-Gi-Oh"@en ;
           rdfs:comment "Game"@en ;
           rdfs:label "Yu-Gi-Oh"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/YugiMutou
+:YugiMutou rdf:type owl:NamedIndividual ,
+                    :Character ;
+           :Love :TeaGardner ;
+           :hasAsset :Exodia ;
+           :hasSex :Male ;
+           :isProtagonistOf :Yu-Gi-Oh ;
+           :Age "16"^^xsd:int ;
+           :Name "YugiMutou"@en ;
+           :Sex "Male" ;
+           rdfs:comment "Game character"@en ;
+           rdfs:label "YugiMutou"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Yuna
