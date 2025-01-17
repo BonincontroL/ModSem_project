@@ -64,15 +64,6 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
                                                                                       ) .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#rivalOf
-:rivalOf rdf:type owl:ObjectProperty ,
-                  owl:SymmetricProperty ;
-         rdfs:domain :Character ;
-         rdfs:range :Character ;
-         rdfs:comment "relationship between rival characters"@en ;
-         rdfs:label "rivalOf"@en .
-
-
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/AppearsIn
 :AppearsIn rdf:type owl:ObjectProperty ;
            owl:inverseOf :hasCharacter ;
@@ -321,6 +312,15 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
        rdfs:range <http://schema.org/Product> ;
        rdfs:comment "A developer/publisher makes a product"@en ;
        rdfs:label "makes"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/rivalOf
+:rivalOf rdf:type owl:ObjectProperty ,
+                  owl:SymmetricProperty ;
+         rdfs:domain :Character ;
+         rdfs:range :Character ;
+         rdfs:comment "relationship between rival characters"@en ;
+         rdfs:label "rivalOf"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/usesWeapon
@@ -668,27 +668,51 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#BlueEyesWhiteDragon
-:BlueEyesWhiteDragon rdf:type owl:NamedIndividual ,
-                              :Card ;
-                     :isAssetOf :Yu-Gi-Oh ;
-                     :Name "BlueEyesWhiteDragon"@en ;
-                     rdfs:comment "Blue Eyes White Dragon is a card from the game"@en ;
-                     rdfs:label "BlueEyesWhiteDragon"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Abby
+:Abby rdf:type owl:NamedIndividual ,
+               :Adult ;
+      :AppearsIn :TheLastOfUs2 ;
+      :hasSex :Female ;
+      :Age "19"^^xsd:int ;
+      :Sex "Female" .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#SetoKaiba
-:SetoKaiba rdf:type owl:NamedIndividual ,
-                    :Character ;
-           :rivalOf :YugiMutou ;
-           :AppearsIn :Yu-Gi-Oh ;
-           :hasAsset :BlueEyesWhiteDragon ;
-           :hasSex :Male ;
-           :Age "16"^^xsd:int ;
-           :Name "SetoKaiba"@en ;
-           :Sex "Male" ;
-           rdfs:comment "Character - Yugi Mutou's rival"@en ;
-           rdfs:label "SetoKaiba"@en .
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Abigail
+:Abigail rdf:type owl:NamedIndividual ,
+                  :Character ;
+         :AppearsIn :RedDeadRedemption ;
+         :ReciprocallyLoves :JohnMarston ;
+         :hasSex :Female ;
+         :Age "28"^^xsd:int ;
+         :Sex "Female" .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#JohnMarston
+:JohnMarston rdf:type owl:NamedIndividual ,
+                      :Character ;
+             :hasProtagonist :RedDeadRedemption ;
+             :hasSex :Male ;
+             :Age "26"^^xsd:int ;
+             :Sex "Male" .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#RedDeadRedemption
+:RedDeadRedemption rdf:type owl:NamedIndividual ,
+                            :Story_Game ;
+                   <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes> :RedDeadRedemption2 ;
+                   :DevBy :RockstarGames ;
+                   :hasTheme :Action-Adventure ;
+                   :Name "RedDeadRedemption"@en ;
+                   :SinglePlayerMode "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#TheLastOfUs2
+:TheLastOfUs2 rdf:type owl:NamedIndividual ,
+                       :Story_Game ;
+              :DevBy :Sony ;
+              :SinglePlayerMode "true"^^xsd:boolean ;
+              rdfs:comment "game" ;
+              rdfs:label "TheLastofUs2" .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
@@ -745,6 +769,15 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                        rdfs:label "BlizzardEntertainment"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/BlueEyesWhiteDragon
+:BlueEyesWhiteDragon rdf:type owl:NamedIndividual ,
+                              :Card ;
+                     :isAssetOf :Yu-Gi-Oh ;
+                     :Name "BlueEyesWhiteDragon"@en ;
+                     rdfs:comment "Blue Eyes White Dragon is a card from the game"@en ;
+                     rdfs:label "BlueEyesWhiteDragon"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Bob
 :Bob rdf:type owl:NamedIndividual ,
               :Character ;
@@ -776,8 +809,10 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Ellie
 :Ellie rdf:type owl:NamedIndividual ,
+                :Protagonist ,
                 :Sniper ;
        :AppearsIn :TheLastOfUs ;
+       :hasProtagonist :TheLastOfUs2 ;
        :hasSex :Female ;
        :Age "28"^^xsd:int ;
        :Name "Ellie"@en ;
@@ -826,7 +861,6 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2023 ;
           :DevBy :EASports ;
-          :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
           :Name "Fifa2022"@en ;
           rdfs:comment "2022 Iteration of FIFA game"@en ;
@@ -838,7 +872,6 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2024 ;
           :DevBy :EASports ;
-          :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
           :Name "Fifa2023"@en ;
           rdfs:comment "2023 Iteration of FIFA game"@en ;
@@ -850,7 +883,6 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                    :Competitive_Game ;
           <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :Fifa2025 ;
           :DevBy :EASports ;
-          :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
           :Name "Fifa2024"@en ;
           rdfs:comment "2024 Iteration of FIFA game"@en ;
@@ -861,7 +893,6 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :Fifa2025 rdf:type owl:NamedIndividual ,
                    :Competitive_Game ;
           :DevBy :EASports ;
-          :hasTheme :Sports ;
           :MultiPlayerMode "true"^^xsd:boolean ;
           :Name "Fifa2025"@en ;
           rdfs:comment "2025 Iteration of FIFA game"@en ;
@@ -1091,6 +1122,20 @@ es. A game asset that can be used to shoot projectiles"""@en ;
         rdfs:label "Sci-Fi"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/SetoKaiba
+:SetoKaiba rdf:type owl:NamedIndividual ,
+                    :Character ;
+           :AppearsIn :Yu-Gi-Oh ;
+           :hasAsset :BlueEyesWhiteDragon ;
+           :hasSex :Male ;
+           :rivalOf :YugiMutou ;
+           :Age "16"^^xsd:int ;
+           :Name "SetoKaiba"@en ;
+           :Sex "Male" ;
+           rdfs:comment "Character - Yugi Mutou's rival"@en ;
+           rdfs:label "SetoKaiba"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sony
 :Sony rdf:type owl:NamedIndividual ;
       :Name "Sony"@en ;
@@ -1169,6 +1214,7 @@ Yugi's Grandfather"""@en ;
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/TheLastOfUs
 :TheLastOfUs rdf:type owl:NamedIndividual ,
                       :Story_Game ;
+             <http://www.ontologydesignpatterns.org/cp/owl/list.owl#previousItem> :TheLastOfUs2 ;
              :DevBy :Sony ;
              :hasTheme :Action-Adventure ,
                        :Post-Apocalyptic ;
@@ -1262,7 +1308,67 @@ Yugi's Grandfather"""@en ;
 
 :x rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
+:y rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:theme rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
 :z rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "SinglePlayerGame" ;
+   rdfs:label "SinglePlayerGame" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :SinglePlayerMode ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SinglePlayerGame ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Two characters loving each other" ;
+   rdfs:label "ReciprocallyLoves" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :Love ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :z
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :Love ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :z ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :x
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :ReciprocallyLoves ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :z
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment "un personaggio è adulto se ha età >= 18" ;
@@ -1343,6 +1449,47 @@ Yugi's Grandfather"""@en ;
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Se è un gioco è un sequel allora ha lo stesso genere del prequel" ;
+   rdfs:label "Themes Equal" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :y
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :y
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasTheme ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :y ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :theme
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasTheme ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :theme
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment "MultiPlayerGame" ;
    rdfs:label "MultiPlayerGame" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
@@ -1364,62 +1511,6 @@ Yugi's Grandfather"""@en ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
                                                        <http://www.w3.org/2003/11/swrl#classPredicate> :MultiPlayerGame ;
                                                        <http://www.w3.org/2003/11/swrl#argument1> :x
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
- ] .
-
-[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "SinglePlayerGame" ;
-   rdfs:label "SinglePlayerGame" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :SinglePlayerMode ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x
-                                                                ] ;
-                                                      rdf:rest rdf:nil
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SinglePlayerGame ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
- ] .
-
-[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Two characters loving each other" ;
-   rdfs:label "ReciprocallyLoves" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :Love ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> :z
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :Love ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :z ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument2> :x
-                                                                ] ;
-                                                      rdf:rest rdf:nil
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :ReciprocallyLoves ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> :z
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]
