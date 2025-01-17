@@ -668,51 +668,29 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Abby
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Abby
 :Abby rdf:type owl:NamedIndividual ,
-               :Adult ;
+               :Character ;
       :AppearsIn :TheLastOfUs2 ;
       :hasSex :Female ;
       :Age "19"^^xsd:int ;
-      :Sex "Female" .
+      :Name "Abby"@en ;
+      :Sex "Female" ;
+      rdfs:comment "Character"@en ;
+      rdfs:label "Abby"@en .
 
 
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#Abigail
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Abigail
 :Abigail rdf:type owl:NamedIndividual ,
                   :Character ;
          :AppearsIn :RedDeadRedemption ;
-         :ReciprocallyLoves :JohnMarston ;
+         :Love :JohnMarston ;
          :hasSex :Female ;
          :Age "28"^^xsd:int ;
-         :Sex "Female" .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#JohnMarston
-:JohnMarston rdf:type owl:NamedIndividual ,
-                      :Character ;
-             :hasProtagonist :RedDeadRedemption ;
-             :hasSex :Male ;
-             :Age "26"^^xsd:int ;
-             :Sex "Male" .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#RedDeadRedemption
-:RedDeadRedemption rdf:type owl:NamedIndividual ,
-                            :Story_Game ;
-                   <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes> :RedDeadRedemption2 ;
-                   :DevBy :RockstarGames ;
-                   :hasTheme :Action-Adventure ;
-                   :Name "RedDeadRedemption"@en ;
-                   :SinglePlayerMode "true"^^xsd:boolean .
-
-
-###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology#TheLastOfUs2
-:TheLastOfUs2 rdf:type owl:NamedIndividual ,
-                       :Story_Game ;
-              :DevBy :Sony ;
-              :SinglePlayerMode "true"^^xsd:boolean ;
-              rdfs:comment "game" ;
-              rdfs:label "TheLastofUs2" .
+         :Name "Abigail"@en ;
+         :Sex "Female" ;
+         rdfs:comment "Character"@en ;
+         rdfs:label "Abigail"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Action-Adventure
@@ -794,7 +772,7 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :DFHStadium rdf:type owl:NamedIndividual ,
                      :Map ;
             :isMapOf :RocketLeague ;
-            :Name "DFHStadium" ;
+            :Name "DFHStadium"@en ;
             rdfs:comment "Map of a game"@en ;
             rdfs:label "DFHStadium"@en .
 
@@ -812,8 +790,8 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                 :Protagonist ,
                 :Sniper ;
        :AppearsIn :TheLastOfUs ;
-       :hasProtagonist :TheLastOfUs2 ;
        :hasSex :Female ;
+       :isProtagonistOf :TheLastOfUs2 ;
        :Age "28"^^xsd:int ;
        :Name "Ellie"@en ;
        :Sex "Female" ;
@@ -969,6 +947,19 @@ es. A game asset that can be used to shoot projectiles"""@en ;
       rdfs:label "Joel"@en .
 
 
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/JohnMarston
+:JohnMarston rdf:type owl:NamedIndividual ,
+                      :Character ;
+             :Love :Abigail ;
+             :hasProtagonist :RedDeadRedemption ;
+             :hasSex :Male ;
+             :Age "26"^^xsd:int ;
+             :Name "JohnMarston"@en ;
+             :Sex "Male" ;
+             rdfs:comment "Character"@en ;
+             rdfs:label "JohnMarston"@en .
+
+
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Konami
 :Konami rdf:type owl:NamedIndividual ,
                  :DevPublisher ;
@@ -1076,6 +1067,16 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                    :Name "PumpActionShotgun"@en ;
                    rdfs:comment "game asset"@en ;
                    rdfs:label "PumpActionShotgun"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RedDeadRedemption
+:RedDeadRedemption rdf:type owl:NamedIndividual ,
+                            :Story_Game ;
+                   <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes> :RedDeadRedemption2 ;
+                   :DevBy :RockstarGames ;
+                   :hasTheme :Action-Adventure ;
+                   :Name "RedDeadRedemption"@en ;
+                   :SinglePlayerMode "true"^^xsd:boolean .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RedDeadRedemption2
@@ -1222,6 +1223,16 @@ Yugi's Grandfather"""@en ;
              :SinglePlayerMode "true"^^xsd:boolean ;
              rdfs:comment "Game"@en ;
              rdfs:label "TheLastOfUs"@en .
+
+
+###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/TheLastOfUs2
+:TheLastOfUs2 rdf:type owl:NamedIndividual ,
+                       :Story_Game ;
+              :DevBy :Sony ;
+              :Name "TheLastofUs2"@en ;
+              :SinglePlayerMode "true"^^xsd:boolean ;
+              rdfs:comment "game"@en ;
+              rdfs:label "TheLastofUs2"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Tidus
@@ -1449,8 +1460,8 @@ Yugi's Grandfather"""@en ;
  ] .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "Se è un gioco è un sequel allora ha lo stesso genere del prequel" ;
-   rdfs:label "Themes Equal" ;
+   rdfs:comment "If it's a game it's a sequel then it has the same genre as the prequel" ;
+   rdfs:label "ThemesEqual" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
    <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
