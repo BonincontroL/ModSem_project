@@ -951,8 +951,8 @@ es. A game asset that can be used to shoot projectiles"""@en ;
 :JohnMarston rdf:type owl:NamedIndividual ,
                       :Character ;
              :Love :Abigail ;
-             :hasProtagonist :RedDeadRedemption ;
              :hasSex :Male ;
+             :isProtagonistOf :RedDeadRedemption ;
              :Age "26"^^xsd:int ;
              :Name "JohnMarston"@en ;
              :Sex "Male" ;
@@ -1076,7 +1076,9 @@ es. A game asset that can be used to shoot projectiles"""@en ;
                    :DevBy :RockstarGames ;
                    :hasTheme :Action-Adventure ;
                    :Name "RedDeadRedemption"@en ;
-                   :SinglePlayerMode "true"^^xsd:boolean .
+                   :SinglePlayerMode "true"^^xsd:boolean ;
+                   rdfs:comment "RedDeadRedemption Game"@en ;
+                   rdfs:label "RedDeadRedemption"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/RedDeadRedemption2
