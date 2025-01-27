@@ -336,7 +336,8 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
 #################################################################
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Age
-:Age rdf:type owl:DatatypeProperty ;
+:Age rdf:type owl:DatatypeProperty ,
+              owl:FunctionalProperty ;
      rdfs:domain :Character ;
      rdfs:range xsd:int ;
      rdfs:comment "The number of years a character has existed for."@en ;
@@ -360,7 +361,8 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Sex
-:Sex rdf:type owl:DatatypeProperty ;
+:Sex rdf:type owl:DatatypeProperty ,
+              owl:FunctionalProperty ;
      rdfs:domain :Character ;
      rdfs:range xsd:string ;
      rdfs:comment "The gender of a character"@en ;
