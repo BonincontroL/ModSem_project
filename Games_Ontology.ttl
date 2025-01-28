@@ -261,7 +261,9 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isThemeOf
 :isThemeOf rdf:type owl:ObjectProperty ;
            rdfs:domain :Themes ;
-           rdfs:range :Game .
+           rdfs:range :Game ;
+           rdfs:comment "Associates a story-driven game with one or more themes"@en ;
+           rdfs:label "isThemeOf"@en .
 
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/isUsedBy
