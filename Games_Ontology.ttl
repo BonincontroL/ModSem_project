@@ -557,6 +557,14 @@ Enumerated class for Gender (Female, Male, NotSpecified)""" ;
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/Map
 :Map rdf:type owl:Class ;
+     owl:equivalentClass [ owl:intersectionOf ( :Map
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :isMapOf ;
+                                                  owl:someValuesFrom :Game
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ;
      rdfs:comment "A fictionary representation of either a real or an imaginary place in which the action is set during a game" ;
      rdfs:label "Map"@en .
 
@@ -1340,6 +1348,33 @@ Yugi's Grandfather"""@en ;
 :z rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
 
 [ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "MultiPlayerGame" ;
+   rdfs:label "MultiPlayerGame" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :MultiPlayerMode ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :MultiPlayerGame ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
    rdfs:comment "SinglePlayerGame" ;
    rdfs:label "SinglePlayerGame" ;
    rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
@@ -1509,33 +1544,6 @@ Yugi's Grandfather"""@en ;
                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasTheme ;
                                                        <http://www.w3.org/2003/11/swrl#argument1> :x ;
                                                        <http://www.w3.org/2003/11/swrl#argument2> :theme
-                                                     ] ;
-                                           rdf:rest rdf:nil
-                                         ]
- ] .
-
-[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
-   rdfs:comment "MultiPlayerGame" ;
-   rdfs:label "MultiPlayerGame" ;
-   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
-   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :MultiPlayerMode ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
-                                                       <http://www.w3.org/2003/11/swrl#argument2> "true"^^xsd:boolean
-                                                     ] ;
-                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Game ;
-                                                                  <http://www.w3.org/2003/11/swrl#argument1> :x
-                                                                ] ;
-                                                      rdf:rest rdf:nil
-                                                    ]
-                                         ] ;
-   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
-                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
-                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :MultiPlayerGame ;
-                                                       <http://www.w3.org/2003/11/swrl#argument1> :x
                                                      ] ;
                                            rdf:rest rdf:nil
                                          ]
