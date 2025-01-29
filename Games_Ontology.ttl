@@ -448,6 +448,14 @@ Downloadable Content for a videogame. It generally is an expansion to the base v
 
 ###  http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/DevPublisher
 :DevPublisher rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :DevPublisher
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :makes ;
+                                                           owl:someValuesFrom :Game
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
               rdfs:comment "A company that develops or publishes games" ;
               rdfs:label "DevPublisher"@en .
 

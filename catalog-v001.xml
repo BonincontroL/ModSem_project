@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1738014175304" name="http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/" uri="GamesOntology.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1738152938316" name="duplicate:http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/" uri="GamesOntology.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1738152938316" name="duplicate:http://www.semanticweb.org/loren_16pbl1h/ontologies/2025/0/Games_Ontology/" uri="Games_Ontology.rdf"/>
     </group>
 </catalog>
