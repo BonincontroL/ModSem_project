@@ -1,0 +1,106 @@
+
+/* Hero Section */
+.hero {
+    background: url('https://media.wired.com/photos/61f48f02d0e55ccbebd52d15/master/pass/Gear-Rant-Game-Family-Plans-1334436001.jpg') no-repeat center center;
+    background-size: cover; /* Assicura che l'immagine copra tutta l'area */
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+    background-color: #1d1d1f; /* Fallback per assenza di immagine */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    padding: 10px 20px;
+    background-color: #007aff;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.hero-button:hover {
+    background-color: #005bb5;
+}
+
+/* About Section */
+.about-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.about-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+
+/* Collection Section */
+.collection-section {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.collection-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.collection-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.collection-item {
+    width: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collection-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Modifica per le immagini */
+.collection-item img {
+    width: 100%;
+    height: 200px; /* Impostato un'altezza fissa per l'immagine */
+    object-fit: cover; /* Copre l'intero spazio del contenitore senza deformarsi */
+    display: block;
+    object-position: center; /* Assicura che l'immagine sia centrata */
+}
+
+.collection-item h3 {
+    padding: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #1d1d1f;
+}
+
+
+

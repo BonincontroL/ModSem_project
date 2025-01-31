@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
+    <link rel="stylesheet" href="stylesheets/global.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+    <link rel="stylesheet" href="stylesheets/characterpage.css"/>
+    <link rel="stylesheet" href="stylesheets/gamepage.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700;800;900&display=swap"/>
+    <title>Character Details</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="navbar">
+            <li>
+                <div class="navbar-single-item">
+                    <a href="/homepage.html">Home</a>
+                </div>
+            </li>
+            <li>
+                <div class="navbar-single-item">
+                    <a href="/videogame.html">Videogiochi</a>
+                </div>
+            </li>
+            <li>
+                <div class="navbar-single-item">
+                    <a href="/publisher.html">Publisher</a>
+                </div>
+            </li>
+            <li>
+                <div class="navbar-single-item">
+                    <a href="/characters.html">Personaggi</a>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+</header>
+<div id="characterDetailsContainer">
+   <!-- <div class="character-details-header">
+
+    </div>-->
+    <div class="character-details-body">
+        <div class="character-image-container">
+            <img id="character-image" src="images/default-character.jpg" alt="Character Image"
+                 onerror="this.onerror=null; this.src='/images/default-character.jpg';">
+        </div>
+        <div class="character-info">
+            <h1 id="character-name">Nome Personaggio</h1>
+            <h2>Dettagli</h2>
+            <p><strong>Età:</strong> <span id="character-age">N/A</span></p>
+            <p><strong>Sesso:</strong> <span id="character-gender">N/A</span></p>
+
+            <h3>Asset Associati:</h3>
+            <ul id="assets-list">
+                <li>Nessun asset disponibile</li>
+            </ul>
+
+            <h3>Mappa Associata:</h3>
+            <p id="character-map">N/A</p>
+
+            <h3>Appare in:</h3>
+            <ul id="games-list">
+                <li>Nessun gioco disponibile</li>
+            </ul>
+
+            <h3>Relazioni:</h3>
+            <ul id="relationships-list">
+                <li>Nessuna relazione disponibile</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h5>VIDEOGAMES WEBSITE</h5>
+            <div class="footer-group">
+                <a href="#">Home</a>
+                <a href="#">Chi siamo</a>
+                <a href="#">Contatti</a>
+                <a href="#">Politiche di privacy</a>
+            </div>
+        </div>
+        <div>
+            <h5>LEGALE</h5>
+            <div class="footer-group">
+                <a href="#">Condizioni generali</a>
+                <a href="#">Politica per i Cookie</a>
+            </div>
+        </div>
+        <div>
+            <h5>CONTATTI</h5>
+            <div class="footer-group">
+                <div class="footer-info-and-logo">
+                    <i class='bx bx-phone-call'></i>
+                    <a href="#">123 456 789</a>
+                </div>
+                <div class="footer-info-and-logo">
+                    <i class='bx bxl-whatsapp'></i>
+                    <a href="#">Whatsapp</a>
+                </div>
+                <div class="footer-info-and-logo">
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <div class="footer-info-and-logo">
+                    <i class='bx bxs-calendar'></i>
+                    <a href="#">Dal Lunedi al Venerdi <br>dalle 09:00 alle 20:00</a>
+                </div>
+            </div>
+        </div>
+        <div class="social-links">
+            <h5>LINK SOCIAL</h5>
+            <div class="footer-info-and-logo">
+                <i class='bx bxl-facebook-circle'></i>
+                <a href="#">Facebook</a>
+            </div>
+            <div class="footer-info-and-logo">
+                <i class='bx bxl-twitter'></i>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="footer-info-and-logo">
+                <i class='bx bxl-instagram'></i>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 Videogames Website. - Via Pessinetto 12, Torino(TO).</p>
+    </div>
+</footer>
+
+<script src="javascripts/characterpage.js"></script>
+<script src="javascripts/characters.js"></script>
+
+</body>
+</html>

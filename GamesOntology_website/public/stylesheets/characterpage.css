@@ -1,0 +1,130 @@
+#characterDetailsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #f8f9fa; /* Colore di sfondo leggermente più caldo */
+}
+
+.character-details-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.character-details-header h1 {
+    font-size: 2.5rem;
+    color: #1d1d1f;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.character-details-body {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Ombra più morbida per un effetto sospeso */
+    overflow: hidden;
+    max-width: 960px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-details-body:hover {
+    transform: translateY(-6px); /* Sollevamento leggero per enfatizzare la card */
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2); /* Ombra più profonda per un effetto dinamico */
+}
+
+.character-image-container {
+    flex: 1 1 40%;
+    background-color: #f2f2f5; /* Colore più neutro per far risaltare l'immagine */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.character-image-container img {
+    max-width: 100%;
+    max-height: 320px;
+    border-radius: 14px; /* Aggiunto un arrotondamento extra per modernità */
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Ombra più profonda sull'immagine */
+}
+
+.character-info {
+    flex: 1 1 60%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.character-info h2,
+.character-info h3 {
+    font-size: 1.8rem;
+    color: #1d1d1f;
+    margin-bottom: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    border-bottom: 2px solid #e5e5e7; /* Sottolineatura sottile */
+    padding-bottom: 6px;
+}
+
+.character-info p {
+    font-size: 1rem;
+    color: #6d6d72; /* Grigio più tenue per maggiore eleganza */
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.character-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.character-info ul li {
+    font-size: 1rem;
+    color: #3a3a3c;
+    background-color: #fbfbfc; /* Colore di fondo molto chiaro */
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 12px; /* Maggiore arrotondamento */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Ombra più pronunciata per separazione */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-info ul li:hover {
+    background-color: #efeff1; /* Colore al passaggio del mouse */
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1); /* Ombra più intensa per evidenziare */
+}
+
+.character-info ul li:last-child {
+    margin-bottom: 0;
+}
+
+/* Stile specifico per #character-name */
+#character-name {
+    text-align: center;
+    font-size: 2rem; /* Dimensione grande per evidenziare */
+    color: #007aff; /* Blu ispirato al design Apple */
+    font-weight: bold; /* Grassetto per dare maggiore enfasi */
+    margin: 20px 0; /* Spaziatura per separarlo dagli altri contenuti */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .character-details-body {
+        flex-direction: column;
+    }
+
+    .character-image-container,
+    .character-info {
+        flex: 1 1 100%;
+    }
+
+    .character-image-container img {
+        max-height: 240px;
+    }
+}

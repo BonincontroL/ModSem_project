@@ -1,0 +1,167 @@
+/* Stile per la card dei personaggi */
+.character-card {
+    width: 200px; /* Dimensione maggiore per un design moderno */
+    border: 1px solid #e0e0e0; /* Colore del bordo più morbido */
+    border-radius: 10px; /* Arrotondamento più pronunciato */
+    padding: 15px;
+    margin: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Ombreggiatura più elegante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+    transform: translateY(-5px); /* Sollevamento della card al passaggio del mouse */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Ombreggiatura più accentuata */
+}
+
+/* Immagine del personaggio */
+.character-image {
+    width: 100%;
+    height: 150px; /* Altezza maggiore per evidenziare l'immagine */
+    object-fit: cover; /* Mantiene le proporzioni senza distorsioni */
+    border-radius: 8px; /* Arrotondamento coerente */
+    margin-bottom: 15px;
+}
+
+/* Nome del personaggio */
+.character-name {
+    font-size: 16px; /* Font più grande per maggiore leggibilità */
+    font-weight: 600;
+    margin: 10px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #333;
+}
+
+/* Bottone "Dettagli" */
+.details-button {
+    font-size: 14px;
+    padding: 8px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px; /* Arrotondamento maggiore */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.details-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Leggero zoom al passaggio del mouse */
+}
+
+/* Contenitore per le categorie di personaggi */
+.type-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Distanza maggiore tra le card */
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* Stile per la card del gioco */
+.game-card {
+    width: 280px; /* Dimensione più ampia per il gioco */
+    height: 380px; /* Altezza maggiore */
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Ombreggiatura morbida */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Immagine del gioco */
+.game-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Titolo del gioco */
+.game-card h3 {
+    font-size: 20px; /* Titolo più grande e leggibile */
+    font-weight: 700;
+    color: #333;
+    margin: 15px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+/* Bottone "Dettagli" per il gioco */
+.game-card button {
+    font-size: 16px; /* Font migliorato per maggiore leggibilità */
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.game-card button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Zoom più marcato per il bottone */
+}
+
+/* Contenitore per le categorie di giochi */
+.theme-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Spazio maggiore tra le card */
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+/* Responsività */
+@media (max-width: 768px) {
+    .character-card,
+    .game-card {
+        width: 90%; /* Adatta la larghezza su dispositivi piccoli */
+        margin: 10px 0;
+    }
+
+    .theme-container,
+    .type-container {
+        gap: 15px; /* Riduce lo spazio tra le card */
+    }
+}
+
+/* Stile per l'header del tipo */
+.type-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #007bff;
+    margin: 20px 0 10px;
+    text-transform: none; /* Assicura che non ci siano altri trasformatori */
+}
+
+

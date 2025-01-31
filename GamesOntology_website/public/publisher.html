@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
+    <link rel="stylesheet" href="stylesheets/global.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+    <link rel="stylesheet" href="stylesheets/videogames.css"/>
+    <link rel="stylesheet" href="stylesheets/publisher.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700;800;900&display=swap"/>
+    <script src="javascripts/publisher.js" defer></script>
+    <title>Publisher</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="/homepage.html">Home</a></li>
+            <li><a href="/videogame.html">Videogiochi</a></li>
+<!--            <li><a href="/publisher.html" class="active">Publisher</a></li>-->
+            <li><a href="/characters.html">Personaggi</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+
+    <section class="publisher-section">
+        <h1 class="section-title">Publisher</h1>
+        <p class="section-description">
+            Scopri i migliori publisher e i giochi che hanno pubblicato.
+        </p>
+        <div id="publisher-container" class="publisher-container">
+            <!-- Le card saranno generate dinamicamente tramite JavaScript -->
+        </div>
+
+        <!-- Modale per i dettagli -->
+        <div id="details-modal" class="modal hidden">
+            <div class="modal-content">
+                <span id="close-modal" class="close-button">&times;</span>
+                <h2 id="modal-title">Dettagli Publisher</h2>
+                <ul id="modal-game-list"></ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h5>VIDEOGAMES WEBSITE</h5>
+            <div class="footer-group">
+                <a href="#">Home</a>
+                <a href="#">Chi siamo</a>
+                <a href="#">Contatti</a>
+                <a href="#">Politiche di privacy</a>
+            </div>
+        </div>
+        <div>
+            <h5>LEGALE</h5>
+            <div class="footer-group">
+                <a href="#">Condizioni generali</a>
+                <a href="#">Politica per i Cookie </a>
+            </div>
+        </div>
+        <div>
+            <h5>CONTATTI</h5>
+            <div class="footer-group">
+                <div class="footer-info-and-logo">
+                    <i class='bx bx-phone-call'></i>
+                    <a href="#">123 456 789</a>
+                </div>
+                <div class="footer-info-and-logo">
+                    <i class='bx bxl-whatsapp'></i>
+                    <a href="#">Whatsapp</a>
+                </div>
+                <div class="footer-info-and-logo">
+                    <i class='bx bx-envelope' ></i>
+                </div>
+                <div class="footer-info-and-logo">
+                    <i class='bx bxs-calendar'></i>
+                    <a href="#">Dal Lunedi al Venerdi <br>dalle 09:00 alle 20:00</a>
+                </div>
+            </div>
+        </div>
+        <div class="social-links">
+            <h5>LINK SOCIAL</h5>
+            <div class="footer-info-and-logo">
+                <i class='bx bxl-facebook-circle' ></i>
+                <a href="#">Facebook</a>
+            </div>
+            <div class="footer-info-and-logo">
+                <i class='bx bxl-twitter'></i>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="footer-info-and-logo">
+                <i class='bx bxl-instagram'></i>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 Videogames Website. - Via Pessinetto 12, Torino(TO).</p>
+    </div>
+</footer>
+</body>
+</html>

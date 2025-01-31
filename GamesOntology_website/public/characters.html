@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
+    <link rel="stylesheet" href="stylesheets/global.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+    <link rel="stylesheet" href="stylesheets/videogames.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700;800;900&display=swap"/>
+    <!--box icon link-->
+    <script src="javascripts/characters.js"></script>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Characters</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="navbar">
+            <li>
+                <div class="navbar-single-item">
+                    <a href="/homepage.html">Home</a>
+                </div>
+            </li>
+            <li>
+                <div class="navbar-single-item">
+                    <a href="/videogame.html">Videogiochi</a>
+                </div>
+            </li>
+            <li>
+                <div class="navbar-single-item">
+                    <a href="/publisher.html">Publisher</a>
+                </div>
+            </li>
+
+
+            <!--<li>
+                <div class="navbar-single-item">
+                    <a href="/characters.html">Personaggi</a>
+                </div>
+            </li>-->
+        </ul>
+    </nav>
+</header>
+<div class="burger-menu" id="burgerMenu">
+    <div class="burger-menu-item">
+        <a href="/videogame.html">Videogiochi</a>
+    </div>
+    <div class="burger-menu-item">
+        <a href="/publisher.html">Publisher</a>
+    </div>
+    <!--<div class="burger-menu-item">
+        <a href="/characters.html">Personaggi</a>
+    </div>-->
+</div>
+<div id="searchCharactersContainer">
+    <div class="search-characters-header">
+        <div class="search-button">
+            <input id="search-bar" class="search-button-input" type="text" placeholder="Cerca personaggio...">
+            <i class='bx bx-search'></i>
+        </div>
+    </div>
+    <div class="popup-no-content-found" id="popupNoContent">
+        <h6>Nessun risultato trovato.</h6>
+    </div>
+<!--    <h3>Personaggi suddivisi per sottoclasse</h3>-->
+
+    <div id="characters-container" class="search-characters-body">
+        <!-- singolo gruppo di personaggi (raggruppati per sottoclasse)-->
+        <div class="characters-group">
+            <!--<div class="characters-group-header">
+                <h2>Protagonisti</h2>
+            </div>-->
+            <div class="characters-group-container">
+                <!--singola card che rappresenta un personaggio (importante mettere data-characterId per poter caricare correttamente al Click la pagina del personaggio)-->
+                <!--  <div class="character-card-mini" data-characterId="101">
+                      <img class="character-big-logo" src="images/characterLOGO.svg" alt="character logo">
+                      <h3>Ellie</h3>
+                  </div>-->
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h5>VIDEOGAMES WEBSITE</h5>
+                <div class="footer-group">
+                    <a href="#">Home</a>
+                    <a href="#">Chi siamo</a>
+                    <a href="#">Contatti</a>
+                    <a href="#">Politiche di privacy</a>
+                </div>
+            </div>
+            <div>
+                <h5>LEGALE</h5>
+                <div class="footer-group">
+                    <a href="#">Condizioni generali</a>
+                    <a href="#">Politica per i Cookie </a>
+                </div>
+            </div>
+            <div>
+                <h5>CONTATTI</h5>
+                <div class="footer-group">
+                    <div class="footer-info-and-logo">
+                        <i class='bx bx-phone-call'></i>
+                        <a href="#">123 456 789</a>
+                    </div>
+                    <div class="footer-info-and-logo">
+                        <i class='bx bxl-whatsapp'></i>
+                        <a href="#">Whatsapp</a>
+                    </div>
+                    <div class="footer-info-and-logo">
+                        <i class='bx bx-envelope' ></i>
+                    </div>
+                    <div class="footer-info-and-logo">
+                        <i class='bx bxs-calendar'></i>
+                        <a href="#">Dal Lunedi al Venerdi <br>dalle 09:00 alle 20:00</a>
+                    </div>
+                </div>
+            </div>
+            <div class="social-links">
+                <h5>LINK SOCIAL</h5>
+                <div class="footer-info-and-logo">
+                    <i class='bx bxl-facebook-circle' ></i>
+                    <a href="#">Facebook</a>
+                </div>
+                <div class="footer-info-and-logo">
+                    <i class='bx bxl-twitter'></i>
+                    <a href="#">Twitter</a>
+                </div>
+                <div class="footer-info-and-logo">
+                    <i class='bx bxl-instagram'></i>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Videogames Website. - Via Pessinetto 12, Torino(TO).</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

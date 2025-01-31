@@ -1,0 +1,206 @@
+/* Reset generale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9; /* Sfondo chiaro */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Contenitore principale */
+.publisher-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra le card */
+    gap: 30px; /* Spazio tra le card */
+    padding: 50px 20px;
+}
+
+/* Card DevPublisher */
+.devPublisher-card {
+    width: 340px; /* Larghezza uniforme */
+    background: #fff; /* Sfondo bianco */
+    border: none;
+    border-radius: 15px; /* Angoli più arrotondati */
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Ombreggiatura più visibile */
+    display: flex;
+    flex-direction: column; /* Elementi in colonna */
+    justify-content: space-between; /* Distribuzione verticale */
+    align-items: center;
+    text-align: center;
+    min-height: 500px; /* Altezza minima */
+    height: auto; /* Si adatta al contenuto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.devPublisher-card:hover {
+    transform: scale(1.05); /* Leggero zoom al passaggio del mouse */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Ombra più marcata */
+}
+
+/* Immagine nella card */
+.devPublisher-image {
+    width: 100%;
+    height: 180px; /* Altezza uniforme */
+    object-fit: cover; /* Adatta l'immagine */
+    border-radius: 10px; /* Angoli arrotondati */
+    margin-bottom: 20px;
+}
+
+/* Titolo del IMG_Publisher */
+.devPublisher-title {
+    font-size: 22px; /* Testo più grande */
+    font-weight: 700;
+    color: #007bff;
+    margin: 15px 0 10px;
+    overflow: hidden; /* Nasconde il testo lungo */
+    text-overflow: ellipsis; /* Mostra "..." per il testo lungo */
+    white-space: nowrap; /* Impedisce il testo su più righe */
+    text-align: center; /* Centra il testo orizzontalmente */
+}
+
+/* Descrizione del IMG_Publisher */
+.devPublisher-description {
+    font-size: 16px; /* Testo più leggibile */
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Lista Giochi */
+.game-list {
+    flex-grow: 1; /* Occupa lo spazio disponibile */
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.game-list li {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Bottone Dettagli */
+.details-button {
+    font-size: 15px;
+    padding: 12px 25px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 25px; /* Bottone arrotondato */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center; /* Centra il bottone orizzontalmente */
+    margin-top: 20px; /* Spazio dal contenuto precedente */
+}
+
+.details-button:hover {
+    background-color: #0056b3; /* Colore più scuro al passaggio del mouse */
+    transform: scale(1.1); /* Leggero zoom del bottone */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .devPublisher-card {
+        width: 90%; /* Adatta la larghezza su schermi piccoli */
+    }
+    .publisher-container {
+        gap: 20px; /* Riduce lo spazio tra le card su schermi piccoli */
+    }
+}
+
+/* Contenitore della sezione IMG_Publisher */
+.publisher-section {
+    text-align: center; /* Centra il testo orizzontalmente */
+    padding: 40px 20px;
+    background-color: #f9f9f9; /* Sfondo chiaro */
+    margin-bottom: 40px; /* Spazio sotto la sezione */
+}
+
+/* Titolo della sezione */
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Descrizione della sezione */
+.section-description {
+    font-size: 18px;
+    color: #666;
+    max-width: 800px; /* Larghezza massima per testi lunghi */
+    margin: 0 auto; /* Centra il testo */
+    line-height: 1.6;
+}
+
+
+/* Nascondi l'elemento */
+.hidden {
+    display: none !important;
+}
+
+/* Modale */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Oscuramento */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Sopra tutti gli elementi */
+}
+
+/* Contenuto della modale */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 90%; /* Adattabilità */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Bottone per chiudere la modale */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Lista nella modale */
+#modal-game-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    text-align: left;
+}
+
+#modal-game-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Oscuramento del contenuto sottostante */
+body.modal-open {
+    overflow: hidden; /* Evita lo scroll della pagina */
+}
